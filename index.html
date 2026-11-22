@@ -1,0 +1,1907 @@
+<!DOCTYPE html>
+<!-- ==========================================================================
+     VELO COMMUTER - BESPOKE BICYCLE BUILDER & COMMUTER ACCESSORIES STOREFRONT
+     Architecture: 100% Pure HTML5 + CSS3 (Zero JavaScript Engine Required)
+     ========================================================================== -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VELO COMMUTER | Bespoke Bicycle Builder & Commuter Cycling Accessories</title>
+  <meta name="description" content="Design your dream commuter bicycle with our interactive studio visualizer. 100% Pure HTML5 and CSS3 without JavaScript. Shop waterproof panniers, smart lights, and locks.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚲</text></svg>">
+
+  <!-- Google Fonts: Outfit and Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
+
+  <!-- Modular CSS Architecture (Zero JavaScript) -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/builder.css">
+  <link rel="stylesheet" href="css/store.css">
+  <link rel="stylesheet" href="css/cart.css">
+</head>
+<body>
+
+  <!-- ================= PURE CSS STATE CONTROLS (HIDDEN RADIOS & CHECKBOXES) ================= -->
+  <!-- 1. Theme Toggle (Dark Default / Light) -->
+  <input type="checkbox" id="theme-toggle-input" class="theme-toggle-input">
+
+  <!-- 2. Cart Slide-Over Drawer Toggle -->
+  <input type="checkbox" id="cart-drawer-toggle" class="drawer-toggle-input">
+
+  <!-- 3. Mobile Navigation Menu Toggle -->
+  <input type="checkbox" id="mobile-menu-toggle" class="pure-css-control">
+
+  <!-- 4. Bicycle Builder Color Radios -->
+  <input type="radio" name="bike-color" id="color-emerald" class="builder-radio-control" checked>
+  <input type="radio" name="bike-color" id="color-stealth" class="builder-radio-control">
+  <input type="radio" name="bike-color" id="color-sand" class="builder-radio-control">
+  <input type="radio" name="bike-color" id="color-cyan" class="builder-radio-control">
+  <input type="radio" name="bike-color" id="color-terracotta" class="builder-radio-control">
+  <input type="radio" name="bike-color" id="color-chrome" class="builder-radio-control">
+
+  <!-- 5. Bicycle Builder Frame Geometry Radios -->
+  <input type="radio" name="bike-frame" id="frame-urban" class="builder-radio-control" checked>
+  <input type="radio" name="bike-frame" id="frame-stepthrough" class="builder-radio-control">
+  <input type="radio" name="bike-frame" id="frame-gravel" class="builder-radio-control">
+  <input type="radio" name="bike-frame" id="frame-fixie" class="builder-radio-control">
+
+  <!-- 6. Bicycle Builder Handlebar Radios -->
+  <input type="radio" name="bike-bar" id="bar-commuter" class="builder-radio-control" checked>
+  <input type="radio" name="bike-bar" id="bar-bullhorn" class="builder-radio-control">
+  <input type="radio" name="bike-bar" id="bar-drop" class="builder-radio-control">
+  <input type="radio" name="bike-bar" id="bar-flat" class="builder-radio-control">
+
+  <!-- 7. Bicycle Builder Saddle Radios -->
+  <input type="radio" name="bike-saddle" id="saddle-leather" class="builder-radio-control" checked>
+  <input type="radio" name="bike-saddle" id="saddle-gel" class="builder-radio-control">
+  <input type="radio" name="bike-saddle" id="saddle-canvas" class="builder-radio-control">
+
+  <!-- 8. Bicycle Builder Wheelset Radios -->
+  <input type="radio" name="bike-wheels" id="wheels-gumwall" class="builder-radio-control" checked>
+  <input type="radio" name="bike-wheels" id="wheels-aero" class="builder-radio-control">
+  <input type="radio" name="bike-wheels" id="wheels-gravel" class="builder-radio-control">
+
+  <!-- 9. Bicycle Builder Drivetrain Radios -->
+  <input type="radio" name="bike-drive" id="drive-belt" class="builder-radio-control" checked>
+  <input type="radio" name="bike-drive" id="drive-hub8" class="builder-radio-control">
+  <input type="radio" name="bike-drive" id="drive-grx11" class="builder-radio-control">
+  <input type="radio" name="bike-drive" id="drive-single" class="builder-radio-control">
+
+  <!-- 10. Bicycle Builder Factory Addons Checkboxes -->
+  <input type="checkbox" id="addon-fenders" class="pure-css-control" checked>
+  <input type="checkbox" id="addon-front-rack" class="pure-css-control" checked>
+  <input type="checkbox" id="addon-rear-rack" class="pure-css-control">
+  <input type="checkbox" id="addon-dynamo" class="pure-css-control" checked>
+  <input type="checkbox" id="addon-bell" class="pure-css-control" checked>
+
+  <!-- 11. Bicycle Builder Stage Actions -->
+  <input type="checkbox" id="toggle-headlight-beam" class="pure-css-control" checked>
+  <input type="checkbox" id="toggle-wheel-spin" class="pure-css-control">
+
+  <!-- 12. Bicycle Builder Configurator Tabs Radios -->
+  <input type="radio" name="builder-tab-nav" id="tab-nav-frame" class="builder-radio-control" checked>
+  <input type="radio" name="builder-tab-nav" id="tab-nav-cockpit" class="builder-radio-control">
+  <input type="radio" name="builder-tab-nav" id="tab-nav-wheels" class="builder-radio-control">
+  <input type="radio" name="builder-tab-nav" id="tab-nav-gear" class="builder-radio-control">
+
+  <!-- 13. Accessories Storefront Category Filter Radios -->
+  <input type="radio" name="cat-filter" id="cat-filter-all" class="pure-css-control" checked>
+  <input type="radio" name="cat-filter" id="cat-filter-bags" class="pure-css-control">
+  <input type="radio" name="cat-filter" id="cat-filter-lighting" class="pure-css-control">
+  <input type="radio" name="cat-filter" id="cat-filter-locks" class="pure-css-control">
+  <input type="radio" name="cat-filter" id="cat-filter-apparel" class="pure-css-control">
+  <input type="radio" name="cat-filter" id="cat-filter-tools" class="pure-css-control">
+
+  <!-- ================= TOP ANNOUNCEMENT BAR ================= -->
+  <div class="announcement-bar">
+    <span><i class="ri-flashlight-line"></i> 100% Pure HTML5 + CSS3 Architecture • Zero JavaScript</span>
+    <span>🚲 Spring Urban Commute: <span class="highlight">FREE EXPRESS SHIPPING</span> on orders over $75 • Use code <span class="highlight">COMMUTE10</span></span>
+  </div>
+
+  <!-- ================= MAIN NAVIGATION BAR ================= -->
+  <header class="main-nav" id="main-nav">
+    <div class="container nav-container">
+      <!-- Brand Logo -->
+      <a href="#" class="brand-logo" aria-label="VELO Commuter Home">
+        <div class="brand-logo-icon">
+          <i class="ri-riding-line"></i>
+        </div>
+        <span>VELO<span class="dot">.</span>COMMUTER</span>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#builder-section" class="nav-link highlight-link"><i class="ri-magic-line"></i> Custom Studio</a></li>
+          <li><a href="#storefront-section" class="nav-link">Commuter Gear</a></li>
+          <li><a href="#craftsmanship-section" class="nav-link">Craftsmanship</a></li>
+          <li><a href="#testimonials-section" class="nav-link">Rider Stories</a></li>
+          <li><a href="#faq-section" class="nav-link">FAQ</a></li>
+        </ul>
+      </nav>
+
+      <!-- Nav Actions (Theme Toggle, Cart Drawer Trigger, CTA) -->
+      <div class="nav-actions">
+        <!-- Pure CSS Theme Switcher Label -->
+        <label for="theme-toggle-input" class="btn-icon theme-toggle-label" title="Toggle Dark/Light Mode">
+          <i class="ri-sun-line icon-sun"></i>
+          <i class="ri-moon-line icon-moon"></i>
+        </label>
+
+        <!-- Pure CSS Slide-Over Cart Drawer Trigger Label -->
+        <label for="cart-drawer-toggle" class="btn-icon btn-cart-trigger" title="Open Commuter Cart">
+          <i class="ri-shopping-bag-3-line"></i>
+          <span class="cart-count-badge">3</span>
+        </label>
+
+        <!-- CTA Build Bike -->
+        <a href="#builder-section" class="btn-primary" style="padding: 10px 18px; font-size: 0.88rem;">
+          <i class="ri-tools-line"></i> Build Bike
+        </a>
+
+        <!-- Mobile Menu Toggle Button -->
+        <label for="mobile-menu-toggle" class="btn-icon btn-mobile-toggle" aria-label="Toggle Menu">
+          <i class="ri-menu-4-line"></i>
+        </label>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= MOBILE NAVIGATION DRAWER (PURE CSS) ================= -->
+  <label for="mobile-menu-toggle" class="mobile-nav-backdrop"></label>
+  <aside class="mobile-nav-drawer">
+    <div>
+      <div style="display: flex; align-items: center; justify-content: space-between;">
+        <div class="brand-logo">
+          <div class="brand-logo-icon"><i class="ri-riding-line"></i></div>
+          <span>VELO<span class="dot">.</span>COMMUTER</span>
+        </div>
+        <label for="mobile-menu-toggle" class="btn-icon" style="width: 32px; height: 32px;"><i class="ri-close-line"></i></label>
+      </div>
+      <ul class="mobile-nav-links">
+        <li><a href="#builder-section"><i class="ri-magic-line text-accent"></i> Custom Bike Builder</a></li>
+        <li><a href="#storefront-section"><i class="ri-store-2-line"></i> Commuter Accessories</a></li>
+        <li><a href="#craftsmanship-section"><i class="ri-hammer-line"></i> Workshop Craft</a></li>
+        <li><a href="#testimonials-section"><i class="ri-user-voice-line"></i> Rider Reviews</a></li>
+        <li><a href="#faq-section"><i class="ri-questionnaire-line"></i> FAQ</a></li>
+      </ul>
+    </div>
+    <div>
+      <a href="#builder-section" class="btn-primary" style="width: 100%;">Start Custom Build</a>
+    </div>
+  </aside>
+
+  <!-- ================= HERO SECTION ================= -->
+  <section class="hero-section" id="hero-section">
+    <img src="images/hero-cyclist.jpg" alt="Urban commuter cyclist in morning light" class="hero-backdrop-img">
+    <div class="hero-overlay-gradient"></div>
+
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge-pill">
+          <span class="pulse-dot"></span>
+          <span>Zero-Grease Gates Belts • Handbuilt Precision</span>
+        </div>
+
+        <h1 class="hero-title">
+          ENGINEERED FOR THE <br>
+          <span class="text-gradient">DAILY URBAN COMMUTE</span>
+        </h1>
+
+        <p class="hero-description">
+          Ditch the subway delays and gridlock. Design your custom, whisper-quiet commuter bicycle in real-time with our interactive studio, or equip your journey with welded waterproof panniers and high-security locks.
+        </p>
+
+        <div class="hero-cta-group">
+          <a href="#builder-section" class="btn-primary">
+            <i class="ri-palette-line"></i> Design Your Custom Bike
+          </a>
+          <a href="#storefront-section" class="btn-secondary">
+            <i class="ri-shopping-bag-line"></i> Browse Commuter Gear
+          </a>
+        </div>
+
+        <!-- Hero Stats Strip -->
+        <div class="hero-stats-strip">
+          <div class="stat-item">
+            <span class="stat-number">25,000+</span>
+            <span class="stat-label">Daily Commuters Powered</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">100%</span>
+            <span class="stat-label">Weatherproof Sealed Gear</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">0 Oil</span>
+            <span class="stat-label">Clean Gates Carbon Belts</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">0ms JS</span>
+            <span class="stat-label">Instant Pure CSS Speed</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FEATURE PILLARS SECTION ================= -->
+  <section class="section-padding-alt">
+    <div class="container">
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon-box"><i class="ri-repeat-line"></i></div>
+          <h3 class="feature-card-title">Gates Carbon Belt Drive</h3>
+          <p class="feature-card-desc">No dirty grease on your trousers. Whisper-quiet polyurethane carbon teeth that never stretch, rust, or require oiling.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-box"><i class="ri-settings-5-line"></i></div>
+          <h3 class="feature-card-title">Internal Hub Gearing</h3>
+          <p class="feature-card-desc">Shimano Nexus internal gears sealed away from rain and grit. Shift gears effortlessly even while stationary at traffic lights.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-box"><i class="ri-umbrella-line"></i></div>
+          <h3 class="feature-card-title">All-Weather Armor</h3>
+          <p class="feature-card-desc">Welded TPU waterproof panniers, full-wrap alloy mudguards, and IPX7 front & rear lighting engineered for torrential downpours.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-box"><i class="ri-shield-check-line"></i></div>
+          <h3 class="feature-card-title">Precision Handbuilt Quality</h3>
+          <p class="feature-card-desc">Every frame is individually aligned, torque-checked, and tuned by master mechanics before rolling out of our workshop.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= BICYCLE BUILDER (CENTRE OF ATTRACTION - PURE CSS) ================= -->
+  <section class="builder-section" id="builder-section">
+    <div class="container">
+      <!-- Section Header -->
+      <div class="section-header-centered">
+        <span class="section-eyebrow"><i class="ri-tools-fill"></i> Centre of Attraction • Custom Studio</span>
+        <h2 class="section-title">Configure Your Bespoke Commuter</h2>
+        <p class="section-subtitle">
+          Watch your custom bicycle react dynamically in pure CSS. Choose your geometry, hand-finished lacquer, cockpit posture, wheelsets, and commuter utility accessories with zero JavaScript.
+        </p>
+      </div>
+
+      <!-- Pure CSS Interactive Bike Builder Grid -->
+      <div class="builder-grid">
+        <!-- Visualizer Column (Left / Centre Stage) -->
+        <div class="builder-visualizer-card">
+          <div class="visualizer-header">
+            <div class="visualizer-title-group">
+              <span class="builder-eyebrow"><i class="ri-palette-line"></i> Live Studio Visualizer</span>
+              <span class="bike-name-input">The Metro Commuter Special</span>
+            </div>
+
+            <!-- Preset Pills (Pure CSS Labels) -->
+            <div class="builder-presets-pills">
+              <span class="presets-label">Presets:</span>
+              <label for="color-emerald" class="preset-pill"><label for="frame-urban"><label for="drive-belt">Metro Commuter</label></label></label>
+              <label for="color-stealth" class="preset-pill"><label for="frame-fixie"><label for="bar-bullhorn">Brooklyn Fixie</label></label></label>
+              <label for="color-sand" class="preset-pill"><label for="frame-stepthrough"><label for="drive-hub8">Seattle Cruiser</label></label></label>
+              <label for="color-terracotta" class="preset-pill"><label for="frame-gravel"><label for="bar-drop">All-Road Nomad</label></label></label>
+            </div>
+          </div>
+
+          <!-- SVG Visualizer Stage -->
+          <div class="visualizer-stage">
+            <div class="stage-backdrop-glow"></div>
+
+            <div class="svg-container">
+              <!-- DYNAMIC VECTOR BICYCLE (100% PURE CSS REACTIVE) -->
+              <svg viewBox="0 0 960 540" xmlns="http://www.w3.org/2000/svg" class="bike-render-svg">
+                <defs>
+                  <!-- Frame Dynamic Paint Gradient -->
+                  <linearGradient id="liveFrameGradient" x1="0%" y1="0%" x2="100%" y2="50%">
+                    <stop offset="0%" stop-color="var(--bike-paint-main)" />
+                    <stop offset="45%" stop-color="var(--bike-paint-accent)" stop-opacity="0.75" />
+                    <stop offset="60%" stop-color="var(--bike-paint-main)" />
+                    <stop offset="100%" stop-color="var(--bike-paint-secondary)" />
+                  </linearGradient>
+
+                  <!-- Headlight Beam Cone Gradient -->
+                  <linearGradient id="headlightBeamGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#fef08a" stop-opacity="0.8" />
+                    <stop offset="45%" stop-color="#fef08a" stop-opacity="0.3" />
+                    <stop offset="100%" stop-color="#fef08a" stop-opacity="0.0" />
+                  </linearGradient>
+
+                  <!-- Realistic Ground Drop Shadow -->
+                  <filter id="bikeShadow" x="-10%" y="-10%" width="120%" height="150%">
+                    <feGaussianBlur in="SourceAlpha" stdDeviation="14" />
+                    <feOffset dx="0" dy="24" result="offsetblur" />
+                    <feFlood flood-color="#000000" flood-opacity="0.45" />
+                    <feComposite in2="offsetblur" operator="in" />
+                    <feMerge>
+                      <feMergeNode />
+                      <feMergeNode in="SourceGraphic" />
+                    </feMerge>
+                  </filter>
+                </defs>
+
+                <!-- Ground Shadow -->
+                <ellipse cx="485" cy="515" rx="360" ry="22" fill="#000000" opacity="0.38" filter="blur(10px)" />
+
+                <!-- ================= WHEELS LAYER ================= -->
+                <!-- Rear Wheel Assembly -->
+                <g id="rear-wheel">
+                  <!-- Outer Tire Tread -->
+                  <circle cx="210" cy="390" r="141" fill="none" stroke="#222222" stroke-width="22" />
+                  <!-- Sidewall (Gumwall Tan / Stealth Black / Gravel Amber) -->
+                  <circle cx="210" cy="390" r="139" fill="none" stroke="var(--bike-tire-color)" stroke-width="15" />
+                  <!-- Rim -->
+                  <circle cx="210" cy="390" r="130" fill="none" stroke="var(--bike-rim-color)" stroke-width="8" />
+                  <!-- Realistic Spokes Pattern -->
+                  <g stroke="#9ca3af" stroke-width="1.2" opacity="0.65">
+                    <line x1="210" y1="390" x2="332" y2="390" /><line x1="210" y1="390" x2="88" y2="390" />
+                    <line x1="210" y1="390" x2="210" y2="512" /><line x1="210" y1="390" x2="210" y2="268" />
+                    <line x1="210" y1="390" x2="296" y2="476" /><line x1="210" y1="390" x2="124" y2="304" />
+                    <line x1="210" y1="390" x2="124" y2="476" /><line x1="210" y1="390" x2="296" y2="304" />
+                    <line x1="210" y1="390" x2="322" y2="436" /><line x1="210" y1="390" x2="98" y2="344" />
+                    <line x1="210" y1="390" x2="98" y2="436" /><line x1="210" y1="390" x2="322" y2="344" />
+                    <line x1="210" y1="390" x2="256" y2="502" /><line x1="210" y1="390" x2="164" y2="278" />
+                    <line x1="210" y1="390" x2="164" y2="502" /><line x1="210" y1="390" x2="256" y2="278" />
+                  </g>
+                  <circle cx="210" cy="390" r="14" fill="#0f172a" stroke="#cbd5e1" stroke-width="2" />
+                </g>
+
+                <!-- Front Wheel Assembly -->
+                <g id="front-wheel">
+                  <circle cx="760" cy="390" r="141" fill="none" stroke="#222222" stroke-width="22" />
+                  <circle cx="760" cy="390" r="139" fill="none" stroke="var(--bike-tire-color)" stroke-width="15" />
+                  <circle cx="760" cy="390" r="130" fill="none" stroke="var(--bike-rim-color)" stroke-width="8" />
+                  <g stroke="#9ca3af" stroke-width="1.2" opacity="0.65">
+                    <line x1="760" y1="390" x2="882" y2="390" /><line x1="760" y1="390" x2="638" y2="390" />
+                    <line x1="760" y1="390" x2="760" y2="512" /><line x1="760" y1="390" x2="760" y2="268" />
+                    <line x1="760" y1="390" x2="846" y2="476" /><line x1="760" y1="390" x2="674" y2="304" />
+                    <line x1="760" y1="390" x2="674" y2="476" /><line x1="760" y1="390" x2="846" y2="304" />
+                    <line x1="760" y1="390" x2="872" y2="436" /><line x1="760" y1="390" x2="648" y2="344" />
+                    <line x1="760" y1="390" x2="648" y2="436" /><line x1="760" y1="390" x2="872" y2="344" />
+                    <line x1="760" y1="390" x2="806" y2="502" /><line x1="760" y1="390" x2="714" y2="278" />
+                    <line x1="760" y1="390" x2="714" y2="502" /><line x1="760" y1="390" x2="806" y2="278" />
+                  </g>
+                  <circle cx="760" cy="390" r="14" fill="#0f172a" stroke="#cbd5e1" stroke-width="2" />
+                </g>
+
+                <!-- ================= COMMUTER ADD-ONS LAYER ================= -->
+                <!-- Alloy Fenders (Full Wrap) -->
+                <g class="addon-svg-fenders">
+                  <path d="M 120 370 A 148 148 0 0 1 310 270" stroke="#1e293b" stroke-width="10" stroke-linecap="round" fill="none" />
+                  <line x1="210" y1="390" x2="135" y2="355" stroke="#94a3b8" stroke-width="2.5" />
+                  <line x1="210" y1="390" x2="280" y2="280" stroke="#94a3b8" stroke-width="2.5" />
+                  <path d="M 670 280 A 148 148 0 0 1 840 430" stroke="#1e293b" stroke-width="10" stroke-linecap="round" fill="none" />
+                  <line x1="760" y1="390" x2="825" y2="420" stroke="#94a3b8" stroke-width="2.5" />
+                </g>
+
+                <!-- Front Porteur Bamboo Deck Cargo Rack -->
+                <g class="addon-svg-front-rack">
+                  <path d="M 760 390 L 760 270 L 830 270" stroke="#cbd5e1" stroke-width="5" stroke-linecap="round" fill="none" />
+                  <line x1="715" y1="235" x2="780" y2="270" stroke="#94a3b8" stroke-width="4" />
+                  <rect x="735" y="262" width="105" height="7" rx="3" fill="#d97706" stroke="#92400e" stroke-width="1" />
+                </g>
+
+                <!-- Rear Pannier Touring Rack -->
+                <g class="addon-svg-rear-rack">
+                  <path d="M 210 390 L 230 230 L 320 230" stroke="#94a3b8" stroke-width="5" stroke-linecap="round" fill="none" />
+                  <line x1="230" y1="230" x2="190" y2="230" stroke="#94a3b8" stroke-width="5" stroke-linecap="round" />
+                  <line x1="400" y1="210" x2="230" y2="230" stroke="#64748b" stroke-width="4" />
+                </g>
+
+                <!-- Dynamo Headlight & Illuminating Cone -->
+                <g class="addon-svg-dynamo">
+                  <circle cx="760" cy="390" r="16" fill="#0284c7" stroke="#38bdf8" stroke-width="3" />
+                  <path d="M 718 215 L 740 215 L 744 205 L 718 205 Z" fill="#e2e8f0" stroke="#334155" stroke-width="1.5" />
+                  <circle cx="744" cy="210" r="6" fill="#fef08a" />
+                  <polygon class="headlight-cone-beam" points="748,206 940,150 940,290 748,214" fill="url(#headlightBeamGrad)" />
+                </g>
+
+                <!-- Harmonic Brass Bell on Stem -->
+                <g class="addon-svg-bell">
+                  <circle cx="692" cy="148" r="8" fill="#f59e0b" stroke="#b45309" stroke-width="1.5" />
+                  <circle cx="690" cy="146" r="3" fill="#fef3c7" opacity="0.8" />
+                </g>
+
+                <!-- ================= MAIN FRAME GEOMETRIES (PURE CSS SWITCHED) ================= -->
+                <g id="main-frame-layer" filter="url(#bikeShadow)">
+                  <!-- 1. Urban Diamond Frame -->
+                  <g class="geom-tube geom-urban">
+                    <line x1="440" y1="390" x2="210" y2="390" stroke="url(#liveFrameGradient)" stroke-width="16" stroke-linecap="round" />
+                    <line x1="400" y1="200" x2="210" y2="390" stroke="url(#liveFrameGradient)" stroke-width="15" stroke-linecap="round" />
+                    <line x1="715" y1="235" x2="440" y2="390" stroke="url(#liveFrameGradient)" stroke-width="22" stroke-linecap="round" />
+                    <line x1="400" y1="200" x2="440" y2="390" stroke="url(#liveFrameGradient)" stroke-width="20" stroke-linecap="round" />
+                    <line x1="400" y1="200" x2="700" y2="165" stroke="url(#liveFrameGradient)" stroke-width="19" stroke-linecap="round" />
+                    <line x1="700" y1="165" x2="715" y2="235" stroke="url(#liveFrameGradient)" stroke-width="24" stroke-linecap="round" />
+                    <line x1="715" y1="235" x2="760" y2="390" stroke="#1f2937" stroke-width="18" stroke-linecap="round" />
+                    <line x1="715" y1="235" x2="745" y2="340" stroke="url(#liveFrameGradient)" stroke-width="16" stroke-linecap="round" />
+                  </g>
+
+                  <!-- 2. Café Step-Through Frame -->
+                  <g class="geom-tube geom-stepthrough">
+                    <line x1="440" y1="390" x2="210" y2="390" stroke="url(#liveFrameGradient)" stroke-width="16" stroke-linecap="round" />
+                    <line x1="410" y1="220" x2="210" y2="390" stroke="url(#liveFrameGradient)" stroke-width="15" stroke-linecap="round" />
+                    <line x1="715" y1="235" x2="440" y2="390" stroke="url(#liveFrameGradient)" stroke-width="24" stroke-linecap="round" />
+                    <line x1="410" y1="220" x2="440" y2="390" stroke="url(#liveFrameGradient)" stroke-width="20" stroke-linecap="round" />
+                    <!-- Swooping Step-Through Top Tube -->
+                    <path d="M 410 220 Q 480 320, 705 225" stroke="url(#liveFrameGradient)" stroke-width="20" stroke-linecap="round" fill="none" />
+                    <line x1="700" y1="165" x2="715" y2="235" stroke="url(#liveFrameGradient)" stroke-width="24" stroke-linecap="round" />
+                    <line x1="715" y1="235" x2="760" y2="390" stroke="#1f2937" stroke-width="18" stroke-linecap="round" />
+                    <line x1="715" y1="235" x2="745" y2="340" stroke="url(#liveFrameGradient)" stroke-width="16" stroke-linecap="round" />
+                  </g>
+
+                  <!-- 3. All-Road Gravel Explorer Frame -->
+                  <g class="geom-tube geom-gravel">
+                    <line x1="440" y1="390" x2="210" y2="390" stroke="url(#liveFrameGradient)" stroke-width="17" stroke-linecap="round" />
+                    <line x1="395" y1="225" x2="210" y2="390" stroke="url(#liveFrameGradient)" stroke-width="15" stroke-linecap="round" />
+                    <line x1="720" y1="225" x2="440" y2="390" stroke="url(#liveFrameGradient)" stroke-width="24" stroke-linecap="round" />
+                    <line x1="395" y1="225" x2="440" y2="390" stroke="url(#liveFrameGradient)" stroke-width="20" stroke-linecap="round" />
+                    <line x1="395" y1="225" x2="705" y2="155" stroke="url(#liveFrameGradient)" stroke-width="20" stroke-linecap="round" />
+                    <line x1="705" y1="155" x2="720" y2="225" stroke="url(#liveFrameGradient)" stroke-width="25" stroke-linecap="round" />
+                    <line x1="720" y1="225" x2="760" y2="390" stroke="#1e293b" stroke-width="19" stroke-linecap="round" />
+                    <line x1="720" y1="225" x2="748" y2="340" stroke="url(#liveFrameGradient)" stroke-width="17" stroke-linecap="round" />
+                  </g>
+
+                  <!-- 4. Heritage Track Fixie Frame -->
+                  <g class="geom-tube geom-fixie">
+                    <line x1="440" y1="390" x2="210" y2="390" stroke="url(#liveFrameGradient)" stroke-width="15" stroke-linecap="round" />
+                    <line x1="400" y1="180" x2="210" y2="390" stroke="url(#liveFrameGradient)" stroke-width="14" stroke-linecap="round" />
+                    <line x1="705" y1="240" x2="440" y2="390" stroke="url(#liveFrameGradient)" stroke-width="20" stroke-linecap="round" />
+                    <line x1="400" y1="180" x2="440" y2="390" stroke="url(#liveFrameGradient)" stroke-width="18" stroke-linecap="round" />
+                    <line x1="400" y1="180" x2="690" y2="180" stroke="url(#liveFrameGradient)" stroke-width="17" stroke-linecap="round" />
+                    <line x1="690" y1="180" x2="705" y2="240" stroke="url(#liveFrameGradient)" stroke-width="22" stroke-linecap="round" />
+                    <line x1="705" y1="240" x2="760" y2="390" stroke="#111827" stroke-width="17" stroke-linecap="round" />
+                  </g>
+
+                  <!-- Headtube Brass Crest Badge -->
+                  <circle cx="708" cy="200" r="6" fill="#d4af37" />
+                </g>
+
+                <!-- ================= DRIVETRAIN LAYER ================= -->
+                <!-- Gates Carbon Belt CDX -->
+                <g class="drive-component drive-belt-svg">
+                  <circle cx="440" cy="390" r="38" fill="none" stroke="#e2e8f0" stroke-width="4" stroke-dasharray="3,3" />
+                  <circle cx="210" cy="390" r="18" fill="none" stroke="#e2e8f0" stroke-width="4" stroke-dasharray="3,3" />
+                  <path d="M 440 352 L 210 372 M 440 428 L 210 408" stroke="#ef4444" stroke-width="4.5" />
+                  <circle cx="440" cy="390" r="32" fill="#18181b" stroke="#ef4444" stroke-width="2" />
+                </g>
+
+                <!-- Shimano Nexus 8-Speed Hub -->
+                <g class="drive-component drive-hub8-svg">
+                  <circle cx="210" cy="390" r="28" fill="#475569" stroke="#94a3b8" stroke-width="3" />
+                  <circle cx="440" cy="390" r="36" fill="#1e293b" stroke="#cbd5e1" stroke-width="3" />
+                  <path d="M 440 354 L 210 374 M 440 426 L 210 406" stroke="#94a3b8" stroke-width="4" stroke-dasharray="6,2" />
+                </g>
+
+                <!-- Shimano 1x10 Derailleur -->
+                <g class="drive-component drive-grx11-svg">
+                  <circle cx="210" cy="390" r="32" fill="#334155" stroke="#cbd5e1" stroke-width="2" />
+                  <path d="M 210 400 L 214 430 L 222 432" stroke="#64748b" stroke-width="5" stroke-linecap="round" fill="none" />
+                  <circle cx="214" cy="430" r="5" fill="#f59e0b" />
+                  <circle cx="440" cy="390" r="34" fill="#0f172a" stroke="#cbd5e1" stroke-width="3" />
+                  <path d="M 440 356 L 210 374 M 440 424 L 214 430" stroke="#cbd5e1" stroke-width="3.5" stroke-dasharray="6,2" />
+                </g>
+
+                <!-- Single Speed -->
+                <g class="drive-component drive-single-svg">
+                  <circle cx="440" cy="390" r="36" fill="#09090b" stroke="#e4e4e7" stroke-width="3" />
+                  <circle cx="210" cy="390" r="16" fill="#3f3f46" stroke="#e4e4e7" stroke-width="2" />
+                  <path d="M 440 354 L 210 374 M 440 426 L 210 406" stroke="#d4d4d8" stroke-width="4" stroke-dasharray="5,2" />
+                </g>
+
+                <!-- Crankarms and Bottom Bracket Shell -->
+                <line x1="440" y1="390" x2="485" y2="445" stroke="#94a3b8" stroke-width="9" stroke-linecap="round" />
+                <line x1="485" y1="445" x2="510" y2="445" stroke="#1e293b" stroke-width="7" stroke-linecap="round" />
+                <circle cx="440" cy="390" r="16" fill="#334155" stroke="#94a3b8" stroke-width="2" />
+
+                <!-- ================= SADDLES LAYER ================= -->
+                <!-- Brooks Honey Leather Saddle -->
+                <g class="saddle-component saddle-leather-svg">
+                  <line x1="400" y1="200" x2="382" y2="135" stroke="#9ca3af" stroke-width="12" stroke-linecap="round" />
+                  <line x1="370" y1="130" x2="410" y2="130" stroke="#475569" stroke-width="5" />
+                  <path d="M 352 118 C 348 130, 390 128, 425 126 C 435 126, 432 118, 352 118 Z" fill="#8d4e28" stroke="#1c1917" stroke-width="1.5" />
+                  <circle cx="360" cy="122" r="2.5" fill="#f59e0b" /><circle cx="370" cy="122" r="2.5" fill="#f59e0b" /><circle cx="380" cy="122" r="2.5" fill="#f59e0b" />
+                </g>
+
+                <!-- Ergonomic Gel Saddle -->
+                <g class="saddle-component saddle-gel-svg">
+                  <line x1="400" y1="200" x2="382" y2="135" stroke="#9ca3af" stroke-width="12" stroke-linecap="round" />
+                  <path d="M 354 120 Q 390 128, 426 127 C 432 123, 358 117, 354 120 Z" fill="#222222" stroke="#111" stroke-width="1.5" />
+                </g>
+
+                <!-- Weatherproof Canvas Saddle -->
+                <g class="saddle-component saddle-canvas-svg">
+                  <line x1="400" y1="200" x2="382" y2="135" stroke="#9ca3af" stroke-width="12" stroke-linecap="round" />
+                  <path d="M 354 120 Q 390 128, 426 127 C 432 123, 358 117, 354 120 Z" fill="#474c52" stroke="#111" stroke-width="1.5" />
+                </g>
+
+                <!-- ================= HANDLEBARS LAYER ================= -->
+                <!-- Swept Commuter Riser Bar -->
+                <g class="bar-component bar-commuter-svg">
+                  <path d="M 700 165 L 702 125 Q 675 110, 640 120" stroke="#d1d5db" stroke-width="12" stroke-linecap="round" fill="none" />
+                  <path d="M 655 118 L 635 122" stroke="#8d4e28" stroke-width="16" stroke-linecap="round" />
+                </g>
+
+                <!-- Pursuit Bullhorn Bar -->
+                <g class="bar-component bar-bullhorn-svg">
+                  <path d="M 700 165 L 705 130 L 735 130 Q 755 125, 760 100" stroke="#d1d5db" stroke-width="11" stroke-linecap="round" fill="none" />
+                  <path d="M 725 130 Q 752 125, 758 102" stroke="#8d4e28" stroke-width="15" stroke-linecap="round" fill="none" />
+                </g>
+
+                <!-- Road Compact Drop Bar -->
+                <g class="bar-component bar-drop-svg">
+                  <path d="M 700 165 L 705 135 L 730 135 C 755 135, 760 170, 740 190 L 715 195" stroke="#d1d5db" stroke-width="11" stroke-linecap="round" fill="none" />
+                  <path d="M 720 135 C 754 135, 758 168, 738 188 L 716 193" stroke="#8d4e28" stroke-width="15" stroke-linecap="round" fill="none" />
+                </g>
+
+                <!-- Trail Flat Bar -->
+                <g class="bar-component bar-flat-svg">
+                  <path d="M 700 165 L 705 135 L 680 135" stroke="#d1d5db" stroke-width="12" stroke-linecap="round" fill="none" />
+                  <circle cx="682" cy="135" r="8" fill="#8d4e28" />
+                </g>
+              </svg>
+            </div>
+
+            <!-- Interactive Hotspots Overlay (Pure CSS Navigation Labels) -->
+            <div class="hotspots-container">
+              <label for="tab-nav-frame" class="hotspot-btn" style="top: 25%; left: 42%;" title="Frame & Paint Finish">
+                <span class="hotspot-pulse"></span>
+                <span class="hotspot-tag">Frame</span>
+              </label>
+              <label for="tab-nav-cockpit" class="hotspot-btn" style="top: 18%; left: 73%;" title="Cockpit & Grips">
+                <span class="hotspot-pulse"></span>
+                <span class="hotspot-tag">Cockpit</span>
+              </label>
+              <label for="tab-nav-cockpit" class="hotspot-btn" style="top: 19%; left: 38%;" title="Saddle">
+                <span class="hotspot-pulse"></span>
+                <span class="hotspot-tag">Saddle</span>
+              </label>
+              <label for="tab-nav-wheels" class="hotspot-btn" style="top: 68%; left: 22%;" title="Wheels & Tires">
+                <span class="hotspot-pulse"></span>
+                <span class="hotspot-tag">Wheels</span>
+              </label>
+              <label for="tab-nav-gear" class="hotspot-btn" style="top: 32%; left: 78%;" title="Commuter Add-ons">
+                <span class="hotspot-pulse"></span>
+                <span class="hotspot-tag">Utility</span>
+              </label>
+            </div>
+
+            <!-- Viewport Stage Action Labels -->
+            <div class="stage-actions">
+              <label for="toggle-headlight-beam" class="stage-action-label" title="Toggle StVZO Headlight Beam">
+                <i class="ri-lightbulb-flash-line"></i> Headlight
+              </label>
+              <label for="toggle-wheel-spin" class="stage-action-label" title="Simulate Wheel Motion">
+                <i class="ri-refresh-line"></i> Spin
+              </label>
+            </div>
+          </div>
+
+          <!-- Live Build Summary Bar -->
+          <div class="builder-summary-bar">
+            <div class="summary-metric">
+              <span class="metric-label">Estimated Weight</span>
+              <span class="metric-value">10.4 kg <small>(22.9 lbs)</small></span>
+            </div>
+            <div class="summary-metric">
+              <span class="metric-label">Riding Posture</span>
+              <span class="metric-value posture-badge">Neutral City Comfort</span>
+            </div>
+            <div class="summary-metric">
+              <span class="metric-label">Lead Time</span>
+              <span class="metric-value text-accent"><i class="ri-truck-line"></i> 5–7 Days Handbuilt</span>
+            </div>
+            <div class="summary-price-box">
+              <div class="price-eyebrow">Complete Build</div>
+              <div class="price-value">$1,149</div>
+              <label for="cart-drawer-toggle" class="btn-primary add-bike-cart-btn">
+                <i class="ri-shopping-bag-3-line"></i> Add Custom Bike to Cart
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Controls Column (Right Side Configurator via Pure CSS Tabs) -->
+        <div class="builder-controls-card">
+          <!-- Configuration Tabs Navigation (Pure CSS Labels) -->
+          <div class="builder-tabs-nav">
+            <label for="tab-nav-frame" class="tab-nav-label">
+              <i class="ri-focus-2-line"></i> Frame & Color
+            </label>
+            <label for="tab-nav-cockpit" class="tab-nav-label">
+              <i class="ri-compass-3-line"></i> Cockpit & Seat
+            </label>
+            <label for="tab-nav-wheels" class="tab-nav-label">
+              <i class="ri-contrast-drop-2-line"></i> Wheels & Drive
+            </label>
+            <label for="tab-nav-gear" class="tab-nav-label">
+              <i class="ri-shield-check-line"></i> Commuter Gear
+            </label>
+          </div>
+
+          <!-- Tab Panes Container -->
+          <div class="builder-tab-panes">
+            <!-- TAB 1: FRAME & COLOR -->
+            <div class="builder-tab-pane" id="pane-frame">
+              <div class="config-section">
+                <h4 class="config-title">1. Choose Frame Geometry</h4>
+                <div class="options-grid">
+                  <label for="frame-urban" class="option-card-label">
+                    <div class="option-card-top">
+                      <span class="option-name">Aero Urban Diamond</span>
+                      <span class="option-price">$790</span>
+                    </div>
+                    <p class="option-desc">Double-butted 4130 chromoly steel frame with internal top tube cable routing, hidden fender eyelets, and vibration-dampening fork.</p>
+                    <div class="option-tags">
+                      <span class="tag-pill"><i class="ri-user-smile-line"></i> Neutral</span>
+                      <span class="tag-pill"><i class="ri-road-map-line"></i> Pavement & City</span>
+                    </div>
+                  </label>
+
+                  <label for="frame-stepthrough" class="option-card-label">
+                    <div class="option-card-top">
+                      <span class="option-name">Café City Step-Through</span>
+                      <span class="option-price">$750</span>
+                    </div>
+                    <p class="option-desc">Low-slung swooping frame geometry allowing seamless mounting in formal work attire or heavy winter coats.</p>
+                    <div class="option-tags">
+                      <span class="tag-pill"><i class="ri-user-smile-line"></i> Upright Comfort</span>
+                      <span class="tag-pill"><i class="ri-road-map-line"></i> Commuter Paths</span>
+                    </div>
+                  </label>
+
+                  <label for="frame-gravel" class="option-card-label">
+                    <div class="option-card-top">
+                      <span class="option-name">All-Road Gravel Explorer</span>
+                      <span class="option-price">$890</span>
+                    </div>
+                    <p class="option-desc">Hydroformed lightweight aluminum with carbon thru-axle fork, clearance for 45mm tires, and triple bottle mounts.</p>
+                    <div class="option-tags">
+                      <span class="tag-pill"><i class="ri-user-smile-line"></i> Sport / Neutral</span>
+                      <span class="tag-pill"><i class="ri-road-map-line"></i> Potholes & Gravel</span>
+                    </div>
+                  </label>
+
+                  <label for="frame-fixie" class="option-card-label">
+                    <div class="option-card-top">
+                      <span class="option-name">Heritage Track Fixie</span>
+                      <span class="option-price">$650</span>
+                    </div>
+                    <p class="option-desc">Tight wheelbase track geometry, 4130 double-butted tubes, horizontal dropouts with integrated chain tensioners.</p>
+                    <div class="option-tags">
+                      <span class="tag-pill"><i class="ri-user-smile-line"></i> Aggressive</span>
+                      <span class="tag-pill"><i class="ri-road-map-line"></i> Pure City Speed</span>
+                    </div>
+                  </label>
+                </div>
+              </div>
+
+              <div class="config-section mt-4">
+                <h4 class="config-title">2. Premium Hand-Finished Color</h4>
+                <div class="color-swatches-grid">
+                  <label for="color-emerald" class="color-swatch-label">
+                    <div class="swatch-circle" style="background: radial-gradient(circle at 30% 30%, #d4af37, #1f4031 60%, #142a20 100%);">
+                      <i class="ri-check-line swatch-check"></i>
+                    </div>
+                    <span class="swatch-name">British Racing</span>
+                    <span class="swatch-finish">Deep Gloss Lacquer</span>
+                  </label>
+
+                  <label for="color-stealth" class="color-swatch-label">
+                    <div class="swatch-circle" style="background: radial-gradient(circle at 30% 30%, #ff4d4f, #23272d 60%, #17191d 100%);">
+                      <i class="ri-check-line swatch-check"></i>
+                    </div>
+                    <span class="swatch-name">Matte Stealth</span>
+                    <span class="swatch-finish">Velvet Satin Matte</span>
+                  </label>
+
+                  <label for="color-sand" class="color-swatch-label">
+                    <div class="swatch-circle" style="background: radial-gradient(circle at 30% 30%, #222222, #c8b699 60%, #a8977c 100%);">
+                      <i class="ri-check-line swatch-check"></i>
+                    </div>
+                    <span class="swatch-name">Desert Sand</span>
+                    <span class="swatch-finish">Matte Earth Coat</span>
+                  </label>
+
+                  <label for="color-cyan" class="color-swatch-label">
+                    <div class="swatch-circle" style="background: radial-gradient(circle at 30% 30%, #f0f6f8, #2e7488 60%, #1d4b58 100%);">
+                      <i class="ri-check-line swatch-check"></i>
+                    </div>
+                    <span class="swatch-name">Glacial Cyan</span>
+                    <span class="swatch-finish">Metallic Sparkle</span>
+                  </label>
+
+                  <label for="color-terracotta" class="color-swatch-label">
+                    <div class="swatch-circle" style="background: radial-gradient(circle at 30% 30%, #fad284, #b3563c 60%, #883a24 100%);">
+                      <i class="ri-check-line swatch-check"></i>
+                    </div>
+                    <span class="swatch-name">Terracotta</span>
+                    <span class="swatch-finish">Semi-Gloss Clay</span>
+                  </label>
+
+                  <label for="color-chrome" class="color-swatch-label">
+                    <div class="swatch-circle" style="background: radial-gradient(circle at 30% 30%, #ffffff, #9aa5b5 60%, #727e90 100%);">
+                      <i class="ri-check-line swatch-check"></i>
+                    </div>
+                    <span class="swatch-name">Mirror Nickel</span>
+                    <span class="swatch-finish">Liquid Chrome Mirror</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <!-- TAB 2: COCKPIT & SADDLE -->
+            <div class="builder-tab-pane" id="pane-cockpit">
+              <div class="config-section">
+                <h4 class="config-title">3. Handlebars & Steering Posture</h4>
+                <div class="options-grid">
+                  <label for="bar-commuter" class="option-card-label">
+                    <div class="option-card-top">
+                      <span class="option-name">Ergonomic Swept Riser Bar</span>
+                      <span class="option-price">Included</span>
+                    </div>
+                    <p class="option-desc">Natural wrist angle for full peripheral awareness in busy downtown traffic.</p>
+                  </label>
+
+                  <label for="bar-bullhorn" class="option-card-label">
+                    <div class="option-card-top">
+                      <span class="option-name">Pursuit Urban Bullhorn</span>
+                      <span class="option-price">+$35</span>
+                    </div>
+                    <p class="option-desc">Forward extended horn grips for sprinting past intersections and bucking strong headwinds.</p>
+                  </label>
+
+                  <label for="bar-drop" class="option-card-label">
+                    <div class="option-card-top">
+                      <span class="option-name">Compact All-Road Drop Bar</span>
+                      <span class="option-price">+$50</span>
+                    </div>
+                    <p class="option-desc">Anatomical shallow drop curve providing 3 distinct hand positions for longer cross-city commutes.</p>
+                  </label>
+
+                  <label for="bar-flat" class="option-card-label">
+                    <div class="option-card-top">
+                      <span class="option-name">Wide Trail Flat Bar (680mm)</span>
+                      <span class="option-price">+$20</span>
+                    </div>
+                    <p class="option-desc">Confidence-inspiring leverage and instant brake lever access between car mirrors.</p>
+                  </label>
+                </div>
+              </div>
+
+              <div class="config-section mt-4">
+                <h4 class="config-title">4. Saddle & Hand Grips</h4>
+                <div class="options-grid">
+                  <label for="saddle-leather" class="option-card-label">
+                    <div class="option-card-top">
+                      <div class="saddle-preview-chip" style="background-color: #8d4e28;"></div>
+                      <span class="option-name">Brooks-Style Honey Leather</span>
+                      <span class="option-price">+$75</span>
+                    </div>
+                    <p class="option-desc">Full-grain vegetable-tanned leather that molds to your anatomy with copper rivets.</p>
+                  </label>
+
+                  <label for="saddle-gel" class="option-card-label">
+                    <div class="option-card-top">
+                      <div class="saddle-preview-chip" style="background-color: #222222;"></div>
+                      <span class="option-name">Ergonomic 3D Mesh Gel Saddle</span>
+                      <span class="option-price">Included</span>
+                    </div>
+                    <p class="option-desc">Central pressure relief channel with dual-density high-rebound vibration foam.</p>
+                  </label>
+
+                  <label for="saddle-canvas" class="option-card-label">
+                    <div class="option-card-top">
+                      <div class="saddle-preview-chip" style="background-color: #474c52;"></div>
+                      <span class="option-name">All-Weather Vulcanized Canvas</span>
+                      <span class="option-price">+$45</span>
+                    </div>
+                    <p class="option-desc">Waterproof organic cotton canvas bonded to flexible vulcanized rubber.</p>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <!-- TAB 3: WHEELS & DRIVE -->
+            <div class="builder-tab-pane" id="pane-wheels">
+              <div class="config-section">
+                <h4 class="config-title">5. Wheelset & Tires</h4>
+                <div class="options-grid">
+                  <label for="wheels-gumwall" class="option-card-label">
+                    <div class="option-card-top">
+                      <span class="option-name">Classic Tan-Wall City Slick 700x28c</span>
+                      <span class="option-price">Included</span>
+                    </div>
+                    <p class="option-desc">Sublime aesthetics with Kevlar flat-protection belt and smooth-rolling 120 TPI casing.</p>
+                  </label>
+
+                  <label for="wheels-aero" class="option-card-label">
+                    <div class="option-card-top">
+                      <span class="option-name">Deep-Dish Aero 40mm Stealth Black</span>
+                      <span class="option-price">+$85</span>
+                    </div>
+                    <p class="option-desc">Rigid aerodynamic double-wall rims with sealed Japanese cartridge bearings.</p>
+                  </label>
+
+                  <label for="wheels-gravel" class="option-card-label">
+                    <div class="option-card-top">
+                      <span class="option-name">Cushion All-Terrain Amber 700x38c</span>
+                      <span class="option-price">+$65</span>
+                    </div>
+                    <p class="option-desc">Micro-diamond tread with supple sidewalls that glide over streetcar rails & gravel.</p>
+                  </label>
+                </div>
+              </div>
+
+              <div class="config-section mt-4">
+                <h4 class="config-title">6. Drivetrain & Gearing</h4>
+                <div class="options-grid">
+                  <label for="drive-belt" class="option-card-label">
+                    <div class="option-card-top">
+                      <span class="option-name">Gates Carbon Drive CDX Belt</span>
+                      <span class="option-price">+$130</span>
+                    </div>
+                    <p class="option-desc">Never oil a chain again. Silent, rustproof carbon-reinforced polyurethane belt.</p>
+                    <div class="option-tags">
+                      <span class="tag-pill tag-accent"><i class="ri-shield-check-line"></i> 25,000+ km Life</span>
+                    </div>
+                  </label>
+
+                  <label for="drive-hub8" class="option-card-label">
+                    <div class="option-card-top">
+                      <span class="option-name">Shimano Nexus 8-Speed Internal Hub</span>
+                      <span class="option-price">+$220</span>
+                    </div>
+                    <p class="option-desc">Enclosed planetary gears protected from rain. Shift gears even while stopped at red lights.</p>
+                  </label>
+
+                  <label for="drive-grx11" class="option-card-label">
+                    <div class="option-card-top">
+                      <span class="option-name">Shimano Cues 1x10 Wide-Range Derailleur</span>
+                      <span class="option-price">+$165</span>
+                    </div>
+                    <p class="option-desc">Clutch rear derailleur that prevents chain slap over potholes with wide hill range.</p>
+                  </label>
+
+                  <label for="drive-single" class="option-card-label">
+                    <div class="option-card-top">
+                      <span class="option-name">Pure Urban Freewheel Single-Speed</span>
+                      <span class="option-price">Included</span>
+                    </div>
+                    <p class="option-desc">Bombproof nickel chain on CNC-machined alloy chainring. Minimum maintenance, maximum joy.</p>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <!-- TAB 4: COMMUTER ADD-ONS -->
+            <div class="builder-tab-pane" id="pane-gear">
+              <div class="config-section">
+                <h4 class="config-title">7. Factory Installed Commuter Accessories</h4>
+                <p class="config-subtitle">All accessories chosen here are precision pre-installed by our mechanics with torque specs.</p>
+
+                <div class="addons-list">
+                  <label for="addon-fenders" class="addon-row-label">
+                    <span class="custom-check-icon"><i class="ri-check-line"></i></span>
+                    <div class="addon-info">
+                      <div class="addon-header">
+                        <span class="addon-name"><i class="ri-umbrella-line"></i> Full Anodized Alloy Fenders Set</span>
+                        <span class="addon-price">+$52</span>
+                      </div>
+                      <p class="addon-desc">Rattle-free 360° spray protection keeping your trousers and shoes immaculate in wet conditions.</p>
+                    </div>
+                  </label>
+
+                  <label for="addon-front-rack" class="addon-row-label">
+                    <span class="custom-check-icon"><i class="ri-check-line"></i></span>
+                    <div class="addon-info">
+                      <div class="addon-header">
+                        <span class="addon-name"><i class="ri-inbox-line"></i> Front Porteur Bamboo Deck Rack</span>
+                        <span class="addon-price">+$65</span>
+                      </div>
+                      <p class="addon-desc">Carries up to 15 kg of pizza boxes, groceries, or backpacks with integrated bungee tie-downs.</p>
+                    </div>
+                  </label>
+
+                  <label for="addon-dynamo" class="addon-row-label">
+                    <span class="custom-check-icon"><i class="ri-check-line"></i></span>
+                    <div class="addon-info">
+                      <div class="addon-header">
+                        <span class="addon-name"><i class="ri-flashlight-line"></i> Shutter Precision Dynamo & LED Light</span>
+                        <span class="addon-price">+$115</span>
+                      </div>
+                      <p class="addon-desc">Self-powered front headlight drawing kinetic energy directly as you pedal. No battery charging ever.</p>
+                    </div>
+                  </label>
+
+                  <label for="addon-rear-rack" class="addon-row-label">
+                    <span class="custom-check-icon"><i class="ri-check-line"></i></span>
+                    <div class="addon-info">
+                      <div class="addon-header">
+                        <span class="addon-name"><i class="ri-archive-line"></i> Heavy-Duty Rear Pannier Touring Rack</span>
+                        <span class="addon-price">+$58</span>
+                      </div>
+                      <p class="addon-desc">Certified 25 kg load capacity with lower mounting rails to keep pannier bags low and balanced.</p>
+                    </div>
+                  </label>
+
+                  <label for="addon-bell" class="addon-row-label">
+                    <span class="custom-check-icon"><i class="ri-check-line"></i></span>
+                    <div class="addon-info">
+                      <div class="addon-header">
+                        <span class="addon-name"><i class="ri-notification-3-line"></i> Harmonic Resonance Brass Bell</span>
+                        <span class="addon-price">+$26</span>
+                      </div>
+                      <p class="addon-desc">Precision CNC brass chime delivering a sustained, courteous, and highly audible tone in traffic.</p>
+                    </div>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ================= COMMUTER ACCESSORIES STOREFRONT ================= -->
+  <section class="storefront-section" id="storefront-section">
+    <div class="container">
+      <!-- Section Header -->
+      <div class="section-header-centered">
+        <span class="section-eyebrow"><i class="ri-shield-star-line"></i> Essential Commuter Gear</span>
+        <h2 class="section-title">Urban Commuter Cycling Accessories</h2>
+        <p class="section-subtitle">
+          Curated gear field-tested across city streets. From welded waterproof rolltops to anti-glare lighting and Sold Secure Gold alloy locks.
+        </p>
+      </div>
+
+      <!-- Store Toolbar & Filters (Pure CSS Category Filtering) -->
+      <div class="store-toolbar">
+        <div class="store-toolbar-top">
+          <!-- Search Bar -->
+          <div class="search-input-wrapper">
+            <i class="ri-search-2-line search-icon"></i>
+            <input type="text" class="store-search-input" placeholder="Search waterproof panniers, helmets, locks, lights...">
+          </div>
+
+          <!-- Sort Indicator -->
+          <div class="store-sort-wrapper">
+            <span class="sort-label"><i class="ri-sort-desc"></i> Sort By:</span>
+            <select class="store-sort-select">
+              <option value="featured">Featured Commuter Picks</option>
+              <option value="price-low">Price: Low to High</option>
+              <option value="price-high">Price: High to Low</option>
+              <option value="rating">Highest Rated</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Category Pills Bar (Pure CSS Clickable Labels) -->
+        <div class="category-pills-bar">
+          <label for="cat-filter-all" class="cat-pill-label">
+            <i class="ri-apps-line"></i> All Gear (12)
+          </label>
+          <label for="cat-filter-bags" class="cat-pill-label">
+            <i class="ri-suitcase-line"></i> Bags & Panniers
+          </label>
+          <label for="cat-filter-lighting" class="cat-pill-label">
+            <i class="ri-flashlight-line"></i> Smart Lighting
+          </label>
+          <label for="cat-filter-locks" class="cat-pill-label">
+            <i class="ri-lock-2-line"></i> Security & Locks
+          </label>
+          <label for="cat-filter-apparel" class="cat-pill-label">
+            <i class="ri-t-shirt-air-line"></i> Rider Apparel
+          </label>
+          <label for="cat-filter-tools" class="cat-pill-label">
+            <i class="ri-wrench-line"></i> Tools & Tuning
+          </label>
+        </div>
+
+        <div class="store-results-meta">
+          <span>Showing 12 of 12 verified commuter products</span>
+          <span><i class="ri-truck-line text-accent"></i> Orders over $75 ship free express</span>
+        </div>
+      </div>
+
+      <!-- Products Grid (All 12 Curated Products with Real Photos) -->
+      <div class="products-grid">
+        <!-- 1. Rolltop Pannier Bag -->
+        <div class="product-card" data-cat="bags">
+          <div class="product-media-wrapper">
+            <span class="product-badge">100% Waterproof</span>
+            <span class="product-tag">Best Seller</span>
+            <img src="images/acc-pannier.jpg" alt="AeroShield 20L Rolltop Commuter Pannier" class="product-img">
+            <a href="#modal-pannier" class="btn-quick-view"><i class="ri-eye-line"></i> Quick View</a>
+          </div>
+          <div class="product-content">
+            <div class="product-meta">
+              <span class="product-cat-label">Luggage & Panniers</span>
+              <div class="product-rating"><span class="stars"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i></span><span class="reviews-count">(142)</span></div>
+            </div>
+            <h3 class="product-title">AeroShield 20L Rolltop Commuter Pannier</h3>
+            <p class="product-short-desc">Welded waterproof TPU rolltop pannier with padded 15" laptop sleeve and quick-lock rack mount.</p>
+            <div class="product-footer">
+              <div class="product-price">$89.00</div>
+              <label for="cart-drawer-toggle" class="btn-add-cart-pill"><i class="ri-shopping-bag-line"></i> Add</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Commuter Backpack -->
+        <div class="product-card" data-cat="bags">
+          <div class="product-media-wrapper">
+            <span class="product-badge">Airflow Suspension</span>
+            <span class="product-tag">Staff Pick</span>
+            <img src="images/acc-backpack.jpg" alt="VeloCourier 28L Weatherproof Daypack" class="product-img">
+            <a href="#modal-backpack" class="btn-quick-view"><i class="ri-eye-line"></i> Quick View</a>
+          </div>
+          <div class="product-content">
+            <div class="product-meta">
+              <span class="product-cat-label">Luggage & Panniers</span>
+              <div class="product-rating"><span class="stars"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-half-fill"></i></span><span class="reviews-count">(98)</span></div>
+            </div>
+            <h3 class="product-title">VeloCourier 28L Weatherproof Daypack</h3>
+            <p class="product-short-desc">Streamlined cyclist daypack with suspended back airflow channel, U-lock holster, and helmet harness.</p>
+            <div class="product-footer">
+              <div class="product-price">$115.00</div>
+              <label for="cart-drawer-toggle" class="btn-add-cart-pill"><i class="ri-shopping-bag-line"></i> Add</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Smart Headlight -->
+        <div class="product-card" data-cat="lighting">
+          <div class="product-media-wrapper">
+            <span class="product-badge">Anti-Glare StVZO</span>
+            <span class="product-tag">Top Rated</span>
+            <img src="images/acc-light-front.jpg" alt="LumenBeam 1000 Smart Headlight" class="product-img">
+            <a href="#modal-light-front" class="btn-quick-view"><i class="ri-eye-line"></i> Quick View</a>
+          </div>
+          <div class="product-content">
+            <div class="product-meta">
+              <span class="product-cat-label">Smart Lighting</span>
+              <div class="product-rating"><span class="stars"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i></span><span class="reviews-count">(210)</span></div>
+            </div>
+            <h3 class="product-title">LumenBeam 1000 Smart Headlight</h3>
+            <p class="product-short-desc">Precision 1000-lumen front beam with cut-off anti-glare lens, ambient light auto-sensor, and USB-C.</p>
+            <div class="product-footer">
+              <div class="product-price">$64.00</div>
+              <label for="cart-drawer-toggle" class="btn-add-cart-pill"><i class="ri-shopping-bag-line"></i> Add</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. Smart Taillight -->
+        <div class="product-card" data-cat="lighting">
+          <div class="product-media-wrapper">
+            <span class="product-badge">Smart Brake Sensor</span>
+            <span class="product-tag">Safety First</span>
+            <img src="images/acc-light-rear.jpg" alt="PulseGlow Brake-Sensing Radar Taillight" class="product-img">
+            <a href="#modal-light-rear" class="btn-quick-view"><i class="ri-eye-line"></i> Quick View</a>
+          </div>
+          <div class="product-content">
+            <div class="product-meta">
+              <span class="product-cat-label">Smart Lighting</span>
+              <div class="product-rating"><span class="stars"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-half-fill"></i></span><span class="reviews-count">(165)</span></div>
+            </div>
+            <h3 class="product-title">PulseGlow Brake-Sensing Radar Taillight</h3>
+            <p class="product-short-desc">3-axis accelerometer flares super bright under braking. Group-ride optical diffuser and auto sleep/wake.</p>
+            <div class="product-footer">
+              <div class="product-price">$42.00</div>
+              <label for="cart-drawer-toggle" class="btn-add-cart-pill"><i class="ri-shopping-bag-line"></i> Add</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. Folding Lock -->
+        <div class="product-card" data-cat="locks">
+          <div class="product-media-wrapper">
+            <span class="product-badge">Sold Secure Gold</span>
+            <span class="product-tag">Hardened Alloy</span>
+            <img src="images/acc-lock-fold.jpg" alt="TitanFold 100cm Hardened Segment Link Lock" class="product-img">
+            <a href="#modal-lock-fold" class="btn-quick-view"><i class="ri-eye-line"></i> Quick View</a>
+          </div>
+          <div class="product-content">
+            <div class="product-meta">
+              <span class="product-cat-label">Security & Locks</span>
+              <div class="product-rating"><span class="stars"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i></span><span class="reviews-count">(305)</span></div>
+            </div>
+            <h3 class="product-title">TitanFold 100cm Hardened Link Lock</h3>
+            <p class="product-short-desc">5.5mm hardened Swedish steel links resistant to bolt-cutters, drill picks, and leverage torsion.</p>
+            <div class="product-footer">
+              <div class="product-price">$78.00</div>
+              <label for="cart-drawer-toggle" class="btn-add-cart-pill"><i class="ri-shopping-bag-line"></i> Add</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6. D-Lock Combo -->
+        <div class="product-card" data-cat="locks">
+          <div class="product-media-wrapper">
+            <span class="product-badge">Dual Deadbolt</span>
+            <span class="product-tag">Value Pick</span>
+            <img src="images/acc-lock-u.jpg" alt="ArmorLock Pro D-Lock + 1.2m Cable" class="product-img">
+            <a href="#modal-lock-u" class="btn-quick-view"><i class="ri-eye-line"></i> Quick View</a>
+          </div>
+          <div class="product-content">
+            <div class="product-meta">
+              <span class="product-cat-label">Security & Locks</span>
+              <div class="product-rating"><span class="stars"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-half-fill"></i></span><span class="reviews-count">(188)</span></div>
+            </div>
+            <h3 class="product-title">ArmorLock Pro D-Lock + 1.2m Cable</h3>
+            <p class="product-short-desc">14mm hardened steel shackle with anti-rotation double deadbolt and flex cable for wheels.</p>
+            <div class="product-footer">
+              <div class="product-price">$58.00</div>
+              <label for="cart-drawer-toggle" class="btn-add-cart-pill"><i class="ri-shopping-bag-line"></i> Add</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- 7. Helmet -->
+        <div class="product-card" data-cat="apparel">
+          <div class="product-media-wrapper">
+            <span class="product-badge">MIPS + LED Beacon</span>
+            <span class="product-tag">Editor's Choice</span>
+            <img src="images/acc-helmet.jpg" alt="Apex Aero Commuter Helmet with Magnetic Visor" class="product-img">
+            <a href="#modal-helmet" class="btn-quick-view"><i class="ri-eye-line"></i> Quick View</a>
+          </div>
+          <div class="product-content">
+            <div class="product-meta">
+              <span class="product-cat-label">Rider Apparel</span>
+              <div class="product-rating"><span class="stars"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i></span><span class="reviews-count">(230)</span></div>
+            </div>
+            <h3 class="product-title">Apex Aero Helmet with Magnetic Visor</h3>
+            <p class="product-short-desc">Modern urban commuter helmet with flip magnetic visor, rear USB LED beacon, and MIPS protection.</p>
+            <div class="product-footer">
+              <div class="product-price">$96.00</div>
+              <label for="cart-drawer-toggle" class="btn-add-cart-pill"><i class="ri-shopping-bag-line"></i> Add</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- 8. Reflective Shell Jacket -->
+        <div class="product-card" data-cat="apparel">
+          <div class="product-media-wrapper">
+            <span class="product-badge">15K Waterproof</span>
+            <span class="product-tag">New Arrival</span>
+            <img src="images/acc-jacket.jpg" alt="StormBuster Reflective Commuter Shell" class="product-img">
+            <a href="#modal-jacket" class="btn-quick-view"><i class="ri-eye-line"></i> Quick View</a>
+          </div>
+          <div class="product-content">
+            <div class="product-meta">
+              <span class="product-cat-label">Rider Apparel</span>
+              <div class="product-rating"><span class="stars"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-half-fill"></i></span><span class="reviews-count">(76)</span></div>
+            </div>
+            <h3 class="product-title">StormBuster Reflective Commuter Shell</h3>
+            <p class="product-short-desc">Understated matte charcoal shell by day that illuminates brightly when hit by vehicular headlights.</p>
+            <div class="product-footer">
+              <div class="product-price">$135.00</div>
+              <label for="cart-drawer-toggle" class="btn-add-cart-pill"><i class="ri-shopping-bag-line"></i> Add</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- 9. Gloves -->
+        <div class="product-card" data-cat="apparel">
+          <div class="product-media-wrapper">
+            <span class="product-badge">Touchscreen Ready</span>
+            <span class="product-tag">Essential</span>
+            <img src="images/acc-gloves.jpg" alt="All-Weather Windblock Cycling Gloves" class="product-img">
+            <a href="#modal-gloves" class="btn-quick-view"><i class="ri-eye-line"></i> Quick View</a>
+          </div>
+          <div class="product-content">
+            <div class="product-meta">
+              <span class="product-cat-label">Rider Apparel</span>
+              <div class="product-rating"><span class="stars"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-line"></i></span><span class="reviews-count">(112)</span></div>
+            </div>
+            <h3 class="product-title">All-Weather Windblock Cycling Gloves</h3>
+            <p class="product-short-desc">Windproof thermal softshell with gel palm vibration dampening and silicone brake lever grips.</p>
+            <div class="product-footer">
+              <div class="product-price">$34.00</div>
+              <label for="cart-drawer-toggle" class="btn-add-cart-pill"><i class="ri-shopping-bag-line"></i> Add</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- 10. Multi-Tool -->
+        <div class="product-card" data-cat="tools">
+          <div class="product-media-wrapper">
+            <span class="product-badge">Lifetime Warranty</span>
+            <span class="product-tag">CNC Vanadium</span>
+            <img src="images/acc-tool.jpg" alt="PrecisionCraft 16-Function CNC Multi-Tool" class="product-img">
+            <a href="#modal-tool" class="btn-quick-view"><i class="ri-eye-line"></i> Quick View</a>
+          </div>
+          <div class="product-content">
+            <div class="product-meta">
+              <span class="product-cat-label">Tools & Tuning</span>
+              <div class="product-rating"><span class="stars"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i></span><span class="reviews-count">(154)</span></div>
+            </div>
+            <h3 class="product-title">PrecisionCraft 16-Function CNC Multi-Tool</h3>
+            <p class="product-short-desc">Ultra-compact machined multi-tool with integrated chain breaker, spoke keys, and tubeless plugger.</p>
+            <div class="product-footer">
+              <div class="product-price">$32.00</div>
+              <label for="cart-drawer-toggle" class="btn-add-cart-pill"><i class="ri-shopping-bag-line"></i> Add</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- 11. Mini Floor Pump -->
+        <div class="product-card" data-cat="tools">
+          <div class="product-media-wrapper">
+            <span class="product-badge">130 PSI Power</span>
+            <span class="product-tag">Compact</span>
+            <img src="images/acc-pump.jpg" alt="HighPressure Pocket Floor Pump with Gauge" class="product-img">
+            <a href="#modal-pump" class="btn-quick-view"><i class="ri-eye-line"></i> Quick View</a>
+          </div>
+          <div class="product-content">
+            <div class="product-meta">
+              <span class="product-cat-label">Tools & Tuning</span>
+              <div class="product-rating"><span class="stars"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-half-fill"></i></span><span class="reviews-count">(89)</span></div>
+            </div>
+            <h3 class="product-title">Pocket Floor Pump with Gauge</h3>
+            <p class="product-short-desc">Fold-out foot peg and flexible rubber hose with integrated inline pressure gauge. Dual Presta/Schrader.</p>
+            <div class="product-footer">
+              <div class="product-price">$38.00</div>
+              <label for="cart-drawer-toggle" class="btn-add-cart-pill"><i class="ri-shopping-bag-line"></i> Add</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- 12. Brass Bell -->
+        <div class="product-card" data-cat="tools">
+          <div class="product-media-wrapper">
+            <span class="product-badge">102dB Chime</span>
+            <span class="product-tag">Crowd Favorite</span>
+            <img src="images/acc-bell.jpg" alt="Harmonic Resonance Brass Vintage Bell" class="product-img">
+            <a href="#modal-bell" class="btn-quick-view"><i class="ri-eye-line"></i> Quick View</a>
+          </div>
+          <div class="product-content">
+            <div class="product-meta">
+              <span class="product-cat-label">Tools & Tuning</span>
+              <div class="product-rating"><span class="stars"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i></span><span class="reviews-count">(320)</span></div>
+            </div>
+            <h3 class="product-title">Harmonic Resonance Brass Bell</h3>
+            <p class="product-short-desc">Hand-tuned solid brass dome delivering a polite yet powerful chime that echoes down city blocks.</p>
+            <div class="product-footer">
+              <div class="product-price">$26.00</div>
+              <label for="cart-drawer-toggle" class="btn-add-cart-pill"><i class="ri-shopping-bag-line"></i> Add</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= WORKSHOP & CRAFTSMANSHIP SECTION ================= -->
+  <section class="section-padding" id="craftsmanship-section">
+    <div class="container">
+      <div class="craftsmanship-grid">
+        <div class="craftsmanship-media">
+          <img src="images/workshop.jpg" alt="Master bike mechanic assembling custom commuter bicycle" class="craftsmanship-img">
+          <div class="craftsmanship-floating-badge">
+            <div class="floating-badge-icon"><i class="ri-shield-check-line"></i></div>
+            <div>
+              <strong>Assembled In Our Workshop</strong>
+              <div style="font-size: 0.82rem; color: #94a3b8;">100% Pre-Tuned & Tested</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="craftsmanship-content">
+          <span class="section-eyebrow"><i class="ri-hammer-line"></i> The Velo Standard</span>
+          <h2 class="section-title">Built by Commuters, for Commuters</h2>
+          <p class="section-subtitle">
+            Most off-the-shelf bikes aren't engineered for daily city grit. They have chains that grease your trousers, exposed gears that jam with road salt, and harsh frames that rattle your wrists.
+          </p>
+
+          <ul class="craftsmanship-list">
+            <li>
+              <i class="ri-check-double-line"></i>
+              <div>
+                <strong>Internal Anti-Rust Cavity Wax</strong>
+                <p style="font-size: 0.9rem; color: var(--text-secondary);">Every steel frame tube is internally fogged with aerospace cavity wax to prevent moisture rust from within.</p>
+              </div>
+            </li>
+            <li>
+              <i class="ri-check-double-line"></i>
+              <div>
+                <strong>Clean Internal Cable Routing</strong>
+                <p style="font-size: 0.9rem; color: var(--text-secondary);">Brake lines and dynamo wiring run through the top and down tubes so they never snag on bike racks or doorframes.</p>
+              </div>
+            </li>
+            <li>
+              <i class="ri-check-double-line"></i>
+              <div>
+                <strong>Delivered 98% Assembled</strong>
+                <p style="font-size: 0.9rem; color: var(--text-secondary);">Simply straighten the handlebars and tighten the pedals using our included wooden-handle torque wrench. You're riding in 5 minutes.</p>
+              </div>
+            </li>
+          </ul>
+
+          <a href="#builder-section" class="btn-primary">
+            <i class="ri-arrow-right-line"></i> Start Building Your Bike
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= COMMUTER RIDER STORIES ================= -->
+  <section class="section-padding-alt" id="testimonials-section">
+    <div class="container">
+      <div class="section-header-centered">
+        <span class="section-eyebrow"><i class="ri-user-voice-line"></i> Community Voices</span>
+        <h2 class="section-title">Loved by Daily Commuters Worldwide</h2>
+        <p class="section-subtitle">Join thousands of riders who transformed their daily commute into the best part of their day.</p>
+      </div>
+
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="stars" style="margin-bottom: 16px;">
+            <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i>
+          </div>
+          <p class="testimonial-quote">
+            "The Gates Belt Drive is absolute perfection. I ride 18 miles roundtrip across London rain and have not touched bike grease in two years. My custom build arrived impeccably tuned."
+          </p>
+          <div class="testimonial-author">
+            <div class="author-avatar">OC</div>
+            <div class="author-info">
+              <h4>Oliver Campbell</h4>
+              <span>London, UK • Metro Commuter Build</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="stars" style="margin-bottom: 16px;">
+            <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i>
+          </div>
+          <p class="testimonial-quote">
+            "The 20L rolltop pannier bag survived a torrential Seattle storm without a single droplet touching my MacBook Pro. The auto-locking rack clips attach in literally two seconds."
+          </p>
+          <div class="testimonial-author">
+            <div class="author-avatar">SM</div>
+            <div class="author-info">
+              <h4>Sarah Miller</h4>
+              <span>Seattle, WA • AeroShield Pannier & Helmet</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="stars" style="margin-bottom: 16px;">
+            <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i>
+          </div>
+          <p class="testimonial-quote">
+            "The pure CSS studio visualizer is unbelievable. When the bicycle arrived, the British Racing Green and Brooks leather finish were even richer in person."
+          </p>
+          <div class="testimonial-author">
+            <div class="author-avatar">KT</div>
+            <div class="author-info">
+              <h4>Kenji Takahashi</h4>
+              <span>Tokyo, Japan • All-Road Nomad Custom</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FAQ SECTION (PURE HTML5 DETAILS/SUMMARY) ================= -->
+  <section class="section-padding" id="faq-section">
+    <div class="container">
+      <div class="section-header-centered">
+        <span class="section-eyebrow"><i class="ri-questionnaire-line"></i> Helpful Answers</span>
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <p class="section-subtitle">Everything you need to know about custom builds, delivery, and warranty.</p>
+      </div>
+
+      <div class="faq-container">
+        <details class="faq-item" open>
+          <summary class="faq-item-header">
+            <span>How does a Gates Carbon Belt Drive compare to a traditional chain?</span>
+            <i class="ri-arrow-down-s-line faq-toggle-icon"></i>
+          </summary>
+          <div class="faq-item-body">
+            A Gates Carbon CDX belt requires zero oil or lubrication, which means it will never leave black grease stains on your trousers or office apparel. It cannot rust, operates in near-total silence, and lasts 3 to 4 times longer than a standard bicycle chain (over 25,000 km).
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-item-header">
+            <span>How difficult is assembly when my bike arrives?</span>
+            <i class="ri-arrow-down-s-line faq-toggle-icon"></i>
+          </summary>
+          <div class="faq-item-body">
+            Your bicycle arrives 98% pre-assembled and fully tuned in an oversized reinforced shipping carton. All you need to do is install the pedals and straighten the handlebars. We include all premium custom hex tools and a step-by-step video guide. It takes under 10 minutes.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-item-header">
+            <span>What is your warranty and trial period?</span>
+            <i class="ri-arrow-down-s-line faq-toggle-icon"></i>
+          </summary>
+          <div class="faq-item-body">
+            We provide a 5-Year Craftsmanship Warranty on all frames and forks, and a 2-Year Warranty on all accessories and components. We also offer a 30-Day Commute Trial: if you don't love your bicycle after 30 days of daily riding, we'll arrange a return with full refund.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-item-header">
+            <span>How does this website work with zero JavaScript?</span>
+            <i class="ri-arrow-down-s-line faq-toggle-icon"></i>
+          </summary>
+          <div class="faq-item-body">
+            This entire storefront is engineered with modern semantic HTML5 and CSS3 features like CSS :has(), sibling selectors, CSS variables, and native :target modals. It loads instantly with zero console errors, zero battery drain, and works in 100% of modern web browsers.
+          </div>
+        </details>
+      </div>
+
+      <!-- Newsletter Banner -->
+      <div class="newsletter-banner">
+        <div class="newsletter-content">
+          <h3>Join the Velo Commuter Guild</h3>
+          <p>Get exclusive early access to limited frame colors, city route maps, and receive a 15% discount code on your first accessories order.</p>
+        </div>
+        <form class="newsletter-form-wrap" action="#subscribed">
+          <input type="email" class="newsletter-input" placeholder="Enter your email address" required>
+          <button type="submit" class="btn-primary">Join Newsletter</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="main-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="brand-logo">
+            <div class="brand-logo-icon"><i class="ri-riding-line"></i></div>
+            <span>VELO<span class="dot">.</span>COMMUTER</span>
+          </div>
+          <p>Bespoke urban bicycles and weatherproof commuter accessories engineered for the daily transit journey.</p>
+          <div class="footer-socials">
+            <a href="#" aria-label="Instagram"><i class="ri-instagram-line"></i></a>
+            <a href="#" aria-label="YouTube"><i class="ri-youtube-line"></i></a>
+            <a href="#" aria-label="Twitter"><i class="ri-twitter-x-line"></i></a>
+            <a href="#" aria-label="Strava"><i class="ri-riding-line"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Custom Studio</h4>
+          <ul>
+            <li><a href="#builder-section">Urban Diamond Frame</a></li>
+            <li><a href="#builder-section">Step-Through City</a></li>
+            <li><a href="#builder-section">All-Road Gravel</a></li>
+            <li><a href="#builder-section">Heritage Fixie</a></li>
+            <li><a href="#builder-section">Gates Carbon Belts</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Commuter Care</h4>
+          <ul>
+            <li><a href="#storefront-section">Waterproof Panniers</a></li>
+            <li><a href="#storefront-section">Smart USB-C Lights</a></li>
+            <li><a href="#storefront-section">Sold Secure Locks</a></li>
+            <li><a href="#storefront-section">All-Weather Apparel</a></li>
+            <li><a href="#storefront-section">Tuning & Tools</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Workshop & Support</h4>
+          <ul>
+            <li><a href="#craftsmanship-section">Our Workshop</a></li>
+            <li><a href="#faq-section">30-Day Commute Trial</a></li>
+            <li><a href="#faq-section">Warranty Registration</a></li>
+            <li><a href="#faq-section">Shipping & Tracking</a></li>
+            <li><a href="#">Mechanic Concierge</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>© 2026 VELO COMMUTER CRAFTWORKS INC. ALL RIGHTS RESERVED.</div>
+        <div style="display: flex; align-items: center; gap: 20px;">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#faq-section">Shipping Policy</a>
+          <a href="#faq-section">Warranty Info</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ================= SLIDE-OVER CART DRAWER (PURE CSS CHECKBOX TOGGLED) ================= -->
+  <label for="cart-drawer-toggle" class="cart-backdrop"></label>
+  <aside class="cart-drawer" aria-label="Shopping Cart">
+    <!-- Cart Header -->
+    <div class="cart-header">
+      <div class="cart-header-title">
+        <i class="ri-shopping-bag-3-line"></i>
+        <span>Your Commuter Cart</span>
+      </div>
+      <label for="cart-drawer-toggle" class="btn-close-cart-label" aria-label="Close cart">
+        <i class="ri-close-line"></i>
+      </label>
+    </div>
+
+    <!-- Free Shipping Progress Tracker -->
+    <div class="shipping-progress-banner">
+      <div class="shipping-progress-text">
+        <i class="ri-checkbox-circle-fill text-success"></i> You unlocked <strong>Free Express Commuter Shipping!</strong>
+      </div>
+      <div class="shipping-progress-track">
+        <div class="shipping-progress-fill"></div>
+      </div>
+    </div>
+
+    <!-- Scrollable Items List -->
+    <div class="cart-items-list">
+      <!-- 1. Handbuilt Custom Commuter Bike Item -->
+      <div class="cart-item-card custom-bike-card">
+        <div class="cart-item-img-wrap">
+          <img src="images/bike-urban.jpg" alt="Custom Handbuilt Commuter Bicycle" class="cart-item-img">
+          <span class="custom-craft-tag"><i class="ri-hammer-line"></i> Handbuilt</span>
+        </div>
+        <div class="cart-item-content">
+          <div class="cart-item-header">
+            <h4 class="cart-item-title">The Metro Commuter Special</h4>
+            <a href="#cart" class="cart-item-remove" title="Remove item"><i class="ri-delete-bin-line"></i></a>
+          </div>
+          <div class="custom-specs-pills-list">
+            <span class="custom-spec-pill"><strong>Frame:</strong> Aero Diamond (British Racing Green)</span>
+            <span class="custom-spec-pill"><strong>Drive:</strong> Gates Carbon Belt</span>
+            <span class="custom-spec-pill"><strong>Wheels:</strong> Tan City Slicks</span>
+            <span class="custom-spec-pill"><strong>Saddle:</strong> Brooks Honey Leather</span>
+            <span class="custom-spec-pill"><strong>Addons:</strong> Full Fenders, Bamboo Front Rack</span>
+          </div>
+          <div class="cart-item-bottom">
+            <div class="cart-item-qty">Qty: <strong>1</strong></div>
+            <div class="cart-item-total">$1,149.00</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. Waterproof Rolltop Pannier -->
+      <div class="cart-item-card">
+        <div class="cart-item-img-wrap">
+          <img src="images/acc-pannier.jpg" alt="AeroShield 20L Rolltop Commuter Pannier" class="cart-item-img">
+        </div>
+        <div class="cart-item-content">
+          <div class="cart-item-header">
+            <h4 class="cart-item-title">AeroShield 20L Rolltop Pannier</h4>
+            <a href="#cart" class="cart-item-remove"><i class="ri-delete-bin-line"></i></a>
+          </div>
+          <div class="cart-item-unit-price">$89.00 each • Charcoal Black</div>
+          <div class="cart-item-bottom">
+            <div class="cart-item-qty">Qty: <strong>1</strong></div>
+            <div class="cart-item-total">$89.00</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. Smart Anti-Glare Headlight -->
+      <div class="cart-item-card">
+        <div class="cart-item-img-wrap">
+          <img src="images/acc-light-front.jpg" alt="LumenBeam 1000 Smart Headlight" class="cart-item-img">
+        </div>
+        <div class="cart-item-content">
+          <div class="cart-item-header">
+            <h4 class="cart-item-title">LumenBeam 1000 Smart Headlight</h4>
+            <a href="#cart" class="cart-item-remove"><i class="ri-delete-bin-line"></i></a>
+          </div>
+          <div class="cart-item-unit-price">$64.00 each • USB-C Fast Charge</div>
+          <div class="cart-item-bottom">
+            <div class="cart-item-qty">Qty: <strong>1</strong></div>
+            <div class="cart-item-total">$64.00</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cart Footer with Promo Code & Totals -->
+    <div class="cart-footer">
+      <div class="promo-section">
+        <div class="promo-input-row">
+          <input type="text" class="promo-input" value="COMMUTE10" placeholder="Promo code">
+          <button type="button" class="btn-apply-promo">Applied</button>
+        </div>
+        <div class="promo-msg success" style="display: block;">Promo "COMMUTE10" applied (10% discount)</div>
+      </div>
+
+      <div class="cart-totals-summary">
+        <div class="totals-row">
+          <span>Subtotal</span>
+          <span>$1,302.00</span>
+        </div>
+        <div class="totals-row">
+          <span class="text-success">Discount (10% OFF)</span>
+          <span class="text-success">-$130.20</span>
+        </div>
+        <div class="totals-row">
+          <span>Express Courier Shipping</span>
+          <span class="text-success">FREE</span>
+        </div>
+        <div class="totals-row total-bold">
+          <span>Total to Pay</span>
+          <span>$1,171.80</span>
+        </div>
+      </div>
+
+      <a href="#checkout-modal" class="btn-primary btn-checkout-drawer">
+        <i class="ri-lock-line"></i> Proceed to Checkout • $1,171.80
+      </a>
+    </div>
+  </aside>
+
+  <!-- ================= PURE CSS NATIVE :TARGET QUICK VIEW MODALS ================= -->
+  <!-- Modal 1: Pannier Bag -->
+  <div class="modal-overlay" id="modal-pannier">
+    <div class="modal-dialog">
+      <a href="#storefront-section" class="modal-close-btn">&times;</a>
+      <div class="quick-view-grid">
+        <div class="quick-view-image-col">
+          <div class="quick-view-badge-wrap">
+            <span class="product-badge">100% Waterproof</span>
+            <span class="stock-pill"><i class="ri-checkbox-circle-fill"></i> In Stock & Ready to Ship</span>
+          </div>
+          <img src="images/acc-pannier.jpg" alt="AeroShield 20L Rolltop Commuter Pannier" class="quick-view-main-img">
+          <div class="quick-view-trust-badges">
+            <span><i class="ri-shield-check-line"></i> 2-Year Warranty</span>
+            <span><i class="ri-arrow-go-back-line"></i> 30-Day Free Trial</span>
+            <span><i class="ri-truck-line"></i> Ships Same Day</span>
+          </div>
+        </div>
+        <div class="quick-view-details-col">
+          <span class="quick-cat-label">Luggage & Panniers</span>
+          <h2 class="quick-title">AeroShield 20L Rolltop Commuter Pannier</h2>
+          <div class="quick-rating-row">
+            <span class="stars"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i></span>
+            <span class="rating-number">4.9</span>
+            <span class="rating-divider">·</span>
+            <span class="rating-reviews">142 verified commuter reviews</span>
+          </div>
+          <div class="quick-price">$89.00</div>
+          <p class="quick-full-desc">The gold standard for everyday bike commuters. Engineered with 840D military-grade TPU nylon with heat-welded seams. Includes a removable padded compartment fitting up to 15-inch laptops, an exterior quick-access water-resistant zipper pocket, and reflective side panels.</p>
+          <div class="quick-specs-table">
+            <h4 class="specs-heading">Technical Specifications</h4>
+            <div class="specs-list">
+              <div class="quick-spec-row"><span class="spec-k">Capacity</span><span class="spec-v">20 Liters</span></div>
+              <div class="quick-spec-row"><span class="spec-k">Weight</span><span class="spec-v">980 grams</span></div>
+              <div class="quick-spec-row"><span class="spec-k">Material</span><span class="spec-v">840D TPU-coated Ripstop Nylon</span></div>
+              <div class="quick-spec-row"><span class="spec-k">Mount System</span><span class="spec-v">Quick-Click Auto-Locking Clips</span></div>
+              <div class="quick-spec-row"><span class="spec-k">Waterproof Rating</span><span class="spec-v">IPX6 Submersible Spray</span></div>
+            </div>
+          </div>
+          <label for="cart-drawer-toggle" class="btn-primary btn-quick-add">
+            <i class="ri-shopping-bag-3-line"></i> Add to Cart • $89.00
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 2: Headlight -->
+  <div class="modal-overlay" id="modal-light-front">
+    <div class="modal-dialog">
+      <a href="#storefront-section" class="modal-close-btn">&times;</a>
+      <div class="quick-view-grid">
+        <div class="quick-view-image-col">
+          <div class="quick-view-badge-wrap">
+            <span class="product-badge">Anti-Glare StVZO</span>
+            <span class="stock-pill"><i class="ri-checkbox-circle-fill"></i> In Stock</span>
+          </div>
+          <img src="images/acc-light-front.jpg" alt="LumenBeam 1000 Smart Headlight" class="quick-view-main-img">
+          <div class="quick-view-trust-badges">
+            <span><i class="ri-shield-check-line"></i> 2-Year Warranty</span>
+            <span><i class="ri-arrow-go-back-line"></i> 30-Day Free Trial</span>
+            <span><i class="ri-truck-line"></i> Ships Same Day</span>
+          </div>
+        </div>
+        <div class="quick-view-details-col">
+          <span class="quick-cat-label">Smart Lighting</span>
+          <h2 class="quick-title">LumenBeam 1000 Smart Headlight</h2>
+          <div class="quick-rating-row">
+            <span class="stars"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i></span>
+            <span class="rating-number">4.9</span>
+            <span class="rating-divider">·</span>
+            <span class="rating-reviews">210 verified commuter reviews</span>
+          </div>
+          <div class="quick-price">$64.00</div>
+          <p class="quick-full-desc">Never blind pedestrians or oncoming drivers again. Features a precision German StVZO compliant beam pattern that channels intense light down onto the tarmac. Equipped with an ambient sensor that auto-adjusts brightness based on streetlighting, and USB-C fast charging.</p>
+          <div class="quick-specs-table">
+            <h4 class="specs-heading">Technical Specifications</h4>
+            <div class="specs-list">
+              <div class="quick-spec-row"><span class="spec-k">Max Output</span><span class="spec-v">1,000 Lumens</span></div>
+              <div class="quick-spec-row"><span class="spec-k">Battery</span><span class="spec-v">4500mAh LG Li-ion</span></div>
+              <div class="quick-spec-row"><span class="spec-k">Runtime</span><span class="spec-v">Up to 18 hrs (Eco / Pulse)</span></div>
+              <div class="quick-spec-row"><span class="spec-k">Waterproof</span><span class="spec-v">IPX7 Submersion Safe</span></div>
+            </div>
+          </div>
+          <label for="cart-drawer-toggle" class="btn-primary btn-quick-add">
+            <i class="ri-shopping-bag-3-line"></i> Add to Cart • $64.00
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 3: Folding Lock -->
+  <div class="modal-overlay" id="modal-lock-fold">
+    <div class="modal-dialog">
+      <a href="#storefront-section" class="modal-close-btn">&times;</a>
+      <div class="quick-view-grid">
+        <div class="quick-view-image-col">
+          <div class="quick-view-badge-wrap">
+            <span class="product-badge">Sold Secure Gold</span>
+            <span class="stock-pill"><i class="ri-checkbox-circle-fill"></i> In Stock</span>
+          </div>
+          <img src="images/acc-lock-fold.jpg" alt="TitanFold 100cm Hardened Link Lock" class="quick-view-main-img">
+        </div>
+        <div class="quick-view-details-col">
+          <span class="quick-cat-label">Security & Locks</span>
+          <h2 class="quick-title">TitanFold 100cm Hardened Link Lock</h2>
+          <div class="quick-price">$78.00</div>
+          <p class="quick-full-desc">Uncompromising security that folds down to the size of a water bottle. Constructed from 5.5mm thick special steel rivets and hardened plates engineered to withstand 12-ton hydraulic cutters.</p>
+          <label for="cart-drawer-toggle" class="btn-primary btn-quick-add">
+            <i class="ri-shopping-bag-3-line"></i> Add to Cart • $78.00
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 4: Helmet -->
+  <div class="modal-overlay" id="modal-helmet">
+    <div class="modal-dialog">
+      <a href="#storefront-section" class="modal-close-btn">&times;</a>
+      <div class="quick-view-grid">
+        <div class="quick-view-image-col">
+          <img src="images/acc-helmet.jpg" alt="Apex Aero Helmet" class="quick-view-main-img">
+        </div>
+        <div class="quick-view-details-col">
+          <span class="quick-cat-label">Rider Apparel</span>
+          <h2 class="quick-title">Apex Aero Helmet with Magnetic Visor</h2>
+          <div class="quick-price">$96.00</div>
+          <p class="quick-full-desc">Designed for daily city transit in all weather conditions. The detachable UV400 magnetic visor shields eyes from blinding sun, wind, rain droplets, and kicked-up street dirt.</p>
+          <label for="cart-drawer-toggle" class="btn-primary btn-quick-add">
+            <i class="ri-shopping-bag-3-line"></i> Add to Cart • $96.00
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Other Generic Modals redirect gracefully -->
+  <div class="modal-overlay" id="modal-backpack">
+    <div class="modal-dialog"><a href="#storefront-section" class="modal-close-btn">&times;</a><div style="padding: 30px; text-align: center;"><h3>VeloCourier 28L Weatherproof Daypack</h3><p>Price: $115.00 • In Stock</p><label for="cart-drawer-toggle" class="btn-primary" style="margin-top: 14px;">Add to Cart</label></div></div>
+  </div>
+  <div class="modal-overlay" id="modal-light-rear">
+    <div class="modal-dialog"><a href="#storefront-section" class="modal-close-btn">&times;</a><div style="padding: 30px; text-align: center;"><h3>PulseGlow Brake-Sensing Radar Taillight</h3><p>Price: $42.00 • In Stock</p><label for="cart-drawer-toggle" class="btn-primary" style="margin-top: 14px;">Add to Cart</label></div></div>
+  </div>
+  <div class="modal-overlay" id="modal-lock-u">
+    <div class="modal-dialog"><a href="#storefront-section" class="modal-close-btn">&times;</a><div style="padding: 30px; text-align: center;"><h3>ArmorLock Pro D-Lock + 1.2m Cable</h3><p>Price: $58.00 • In Stock</p><label for="cart-drawer-toggle" class="btn-primary" style="margin-top: 14px;">Add to Cart</label></div></div>
+  </div>
+  <div class="modal-overlay" id="modal-jacket">
+    <div class="modal-dialog"><a href="#storefront-section" class="modal-close-btn">&times;</a><div style="padding: 30px; text-align: center;"><h3>StormBuster Reflective Shell</h3><p>Price: $135.00 • In Stock</p><label for="cart-drawer-toggle" class="btn-primary" style="margin-top: 14px;">Add to Cart</label></div></div>
+  </div>
+  <div class="modal-overlay" id="modal-gloves">
+    <div class="modal-dialog"><a href="#storefront-section" class="modal-close-btn">&times;</a><div style="padding: 30px; text-align: center;"><h3>All-Weather Windblock Cycling Gloves</h3><p>Price: $34.00 • In Stock</p><label for="cart-drawer-toggle" class="btn-primary" style="margin-top: 14px;">Add to Cart</label></div></div>
+  </div>
+  <div class="modal-overlay" id="modal-tool">
+    <div class="modal-dialog"><a href="#storefront-section" class="modal-close-btn">&times;</a><div style="padding: 30px; text-align: center;"><h3>PrecisionCraft 16-Function CNC Multi-Tool</h3><p>Price: $32.00 • In Stock</p><label for="cart-drawer-toggle" class="btn-primary" style="margin-top: 14px;">Add to Cart</label></div></div>
+  </div>
+  <div class="modal-overlay" id="modal-pump">
+    <div class="modal-dialog"><a href="#storefront-section" class="modal-close-btn">&times;</a><div style="padding: 30px; text-align: center;"><h3>Pocket Floor Pump with Gauge</h3><p>Price: $38.00 • In Stock</p><label for="cart-drawer-toggle" class="btn-primary" style="margin-top: 14px;">Add to Cart</label></div></div>
+  </div>
+  <div class="modal-overlay" id="modal-bell">
+    <div class="modal-dialog"><a href="#storefront-section" class="modal-close-btn">&times;</a><div style="padding: 30px; text-align: center;"><h3>Harmonic Resonance Brass Bell</h3><p>Price: $26.00 • In Stock</p><label for="cart-drawer-toggle" class="btn-primary" style="margin-top: 14px;">Add to Cart</label></div></div>
+  </div>
+
+  <!-- ================= CHECKOUT MODAL (PURE CSS :TARGET) ================= -->
+  <div class="modal-overlay" id="checkout-modal">
+    <div class="modal-dialog checkout-modal-dialog">
+      <a href="#cart" class="modal-close-btn">&times;</a>
+      <div class="checkout-grid">
+        <div class="checkout-form-col">
+          <h3><i class="ri-shield-check-line text-accent"></i> Secure Commuter Checkout</h3>
+          <form action="#order-success">
+            <div class="form-field">
+              <label>Full Name *</label>
+              <input type="text" value="Maya Chen" required>
+            </div>
+            <div class="form-field">
+              <label>Email Address (for order tracking) *</label>
+              <input type="email" value="maya.chen@commuter.io" required>
+            </div>
+            <div class="form-field">
+              <label>Street Address *</label>
+              <input type="text" value="742 Urban Greenway Apt 4B" required>
+            </div>
+            <div class="form-group-row">
+              <div class="form-field">
+                <label>City *</label>
+                <input type="text" value="Portland" required>
+              </div>
+              <div class="form-field">
+                <label>Postal Code *</label>
+                <input type="text" value="97201" required>
+              </div>
+            </div>
+
+            <label style="font-size: 0.82rem; font-weight: 600; color: var(--text-secondary); margin-top: 10px; display: block;">Select Payment Method</label>
+            <div class="payment-methods-strip">
+              <div class="payment-method-card active"><i class="ri-bank-card-line"></i><span>Credit Card</span></div>
+              <div class="payment-method-card"><i class="ri-apple-fill"></i><span>Apple Pay</span></div>
+              <div class="payment-method-card"><i class="ri-money-dollar-circle-line"></i><span>0% Klarna</span></div>
+            </div>
+
+            <div class="form-field">
+              <label>Card Number</label>
+              <input type="text" value="4242 •••• •••• 9102">
+            </div>
+
+            <button type="submit" class="btn-primary" style="width: 100%; margin-top: 16px; padding: 14px;">
+              <i class="ri-lock-line"></i> Complete Order ($1,171.80)
+            </button>
+          </form>
+        </div>
+
+        <div class="checkout-summary-col">
+          <h3 style="font-size: 1.25rem; margin-bottom: 20px;">Order Summary</h3>
+          <div class="checkout-summary-box">
+            <div class="summary-line"><span>Items (3)</span><span>$1,302.00</span></div>
+            <div class="summary-line text-success"><span>Discount (COMMUTE10)</span><span>-$130.20</span></div>
+            <div class="summary-line"><span>Express Shipping</span><span>FREE</span></div>
+            <div class="summary-divider"></div>
+            <div class="summary-total"><span>Total to Pay</span><span>$1,171.80</span></div>
+          </div>
+          <div class="security-assurance-strip">
+            <span><i class="ri-lock-2-line"></i> 256-Bit Bank Grade SSL Encryption</span>
+            <span><i class="ri-truck-line"></i> Guaranteed Insured Courier Dispatch</span>
+            <span><i class="ri-restart-line"></i> 30-Day Hassle-Free Commute Return</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= ORDER CONFIRMATION CELEBRATION MODAL (PURE CSS :TARGET) ================= -->
+  <div class="modal-overlay" id="order-success">
+    <div class="modal-dialog">
+      <a href="#storefront-section" class="modal-close-btn">&times;</a>
+      <div class="order-confirmation-screen">
+        <div class="confetti-burst-icon"><i class="ri-checkbox-circle-fill"></i></div>
+        <h2 class="confirmation-title">Thank You, Maya Chen!</h2>
+        <p class="confirmation-subtitle">Your commuter order #VELO-849201 has been confirmed and registered with our workshop mechanics.</p>
+        <div class="order-details-card">
+          <div class="order-num-row"><span class="order-num-label">Order Number</span><span class="order-num-value">VELO-849201</span></div>
+          <div class="order-num-row"><span class="order-num-label">Estimated Delivery</span><span class="order-num-value text-accent"><i class="ri-calendar-check-line"></i> 5–7 Business Days Handbuilt</span></div>
+          <div class="order-num-row"><span class="order-num-label">Shipping Address</span><span class="order-num-value">742 Urban Greenway Apt 4B, Portland 97201</span></div>
+          <div class="order-num-row"><span class="order-num-label">Total Charged</span><span class="order-num-value" style="font-weight: 800;">$1,171.80</span></div>
+        </div>
+        <p class="confirmation-note">A tracking confirmation email has been dispatched with GPS tracking.</p>
+        <a href="#storefront-section" class="btn-primary btn-done-shopping"><i class="ri-riding-line"></i> Continue Exploring Gear</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ZERO JAVASCRIPT: No <script> tags used. 100% Pure HTML5 + CSS3 Execution. -->
+</body>
+</html>

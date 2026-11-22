@@ -1,0 +1,833 @@
+/* ==========================================================================
+   VELO COMMUTER - BICYCLE BUILDER PURE CSS ENGINE
+   Architecture: 100% Pure CSS Reactivity via CSS :has() & Sibling Selectors
+   ========================================================================== */
+
+.builder-section {
+  position: relative;
+  background-color: var(--bg-primary);
+  padding: 80px 0 100px 0;
+}
+
+.builder-grid {
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  gap: 32px;
+  align-items: start;
+}
+
+/* ================= PURE CSS COLOR THEME REACTIVITY ================= */
+body:has(#color-emerald:checked) {
+  --bike-paint-main: #1f4031;
+  --bike-paint-secondary: #142a20;
+  --bike-paint-accent: #d4af37;
+}
+body:has(#color-stealth:checked) {
+  --bike-paint-main: #23272d;
+  --bike-paint-secondary: #17191d;
+  --bike-paint-accent: #ef4444;
+}
+body:has(#color-sand:checked) {
+  --bike-paint-main: #c8b699;
+  --bike-paint-secondary: #a8977c;
+  --bike-paint-accent: #222222;
+}
+body:has(#color-cyan:checked) {
+  --bike-paint-main: #2e7488;
+  --bike-paint-secondary: #1d4b58;
+  --bike-paint-accent: #f0f6f8;
+}
+body:has(#color-terracotta:checked) {
+  --bike-paint-main: #b3563c;
+  --bike-paint-secondary: #883a24;
+  --bike-paint-accent: #fad284;
+}
+body:has(#color-chrome:checked) {
+  --bike-paint-main: #9aa5b5;
+  --bike-paint-secondary: #727e90;
+  --bike-paint-accent: #ffffff;
+}
+
+/* Active Swatch Indicator */
+body:has(#color-emerald:checked) label[for="color-emerald"],
+body:has(#color-stealth:checked) label[for="color-stealth"],
+body:has(#color-sand:checked) label[for="color-sand"],
+body:has(#color-cyan:checked) label[for="color-cyan"],
+body:has(#color-terracotta:checked) label[for="color-terracotta"],
+body:has(#color-chrome:checked) label[for="color-chrome"] {
+  border-color: var(--accent-primary);
+  background: rgba(16, 185, 129, 0.12);
+  box-shadow: 0 0 16px rgba(16, 185, 129, 0.25);
+}
+
+body:has(#color-emerald:checked) label[for="color-emerald"] .swatch-check,
+body:has(#color-stealth:checked) label[for="color-stealth"] .swatch-check,
+body:has(#color-sand:checked) label[for="color-sand"] .swatch-check,
+body:has(#color-cyan:checked) label[for="color-cyan"] .swatch-check,
+body:has(#color-terracotta:checked) label[for="color-terracotta"] .swatch-check,
+body:has(#color-chrome:checked) label[for="color-chrome"] .swatch-check {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ================= PURE CSS FRAME GEOMETRY DISPLAY ================= */
+.geom-tube { display: none; }
+
+body:has(#frame-urban:checked) .geom-urban { display: inline; }
+body:has(#frame-stepthrough:checked) .geom-stepthrough { display: inline; }
+body:has(#frame-gravel:checked) .geom-gravel { display: inline; }
+body:has(#frame-fixie:checked) .geom-fixie { display: inline; }
+
+/* Active Frame Card Indicator */
+body:has(#frame-urban:checked) label[for="frame-urban"],
+body:has(#frame-stepthrough:checked) label[for="frame-stepthrough"],
+body:has(#frame-gravel:checked) label[for="frame-gravel"],
+body:has(#frame-fixie:checked) label[for="frame-fixie"] {
+  border-color: var(--accent-primary);
+  background: rgba(16, 185, 129, 0.08);
+  box-shadow: 0 0 14px rgba(16, 185, 129, 0.2);
+}
+
+/* ================= PURE CSS HANDLEBARS DISPLAY ================= */
+.bar-component { display: none; }
+body:has(#bar-commuter:checked) .bar-commuter-svg { display: inline; }
+body:has(#bar-bullhorn:checked) .bar-bullhorn-svg { display: inline; }
+body:has(#bar-drop:checked) .bar-drop-svg { display: inline; }
+body:has(#bar-flat:checked) .bar-flat-svg { display: inline; }
+
+body:has(#bar-commuter:checked) label[for="bar-commuter"],
+body:has(#bar-bullhorn:checked) label[for="bar-bullhorn"],
+body:has(#bar-drop:checked) label[for="bar-drop"],
+body:has(#bar-flat:checked) label[for="bar-flat"] {
+  border-color: var(--accent-primary);
+  background: rgba(16, 185, 129, 0.08);
+}
+
+/* ================= PURE CSS SADDLES DISPLAY ================= */
+.saddle-component { display: none; }
+body:has(#saddle-leather:checked) .saddle-leather-svg { display: inline; }
+body:has(#saddle-gel:checked) .saddle-gel-svg { display: inline; }
+body:has(#saddle-canvas:checked) .saddle-canvas-svg { display: inline; }
+
+body:has(#saddle-leather:checked) label[for="saddle-leather"],
+body:has(#saddle-gel:checked) label[for="saddle-gel"],
+body:has(#saddle-canvas:checked) label[for="saddle-canvas"] {
+  border-color: var(--accent-primary);
+  background: rgba(16, 185, 129, 0.08);
+}
+
+/* ================= PURE CSS WHEELS DISPLAY ================= */
+body:has(#wheels-gumwall:checked) {
+  --bike-tire-color: #d6a366;
+  --bike-rim-color: #333333;
+}
+body:has(#wheels-aero:checked) {
+  --bike-tire-color: #1a1a1a;
+  --bike-rim-color: #16181d;
+}
+body:has(#wheels-gravel:checked) {
+  --bike-tire-color: #8a623a;
+  --bike-rim-color: #3b3f46;
+}
+
+body:has(#wheels-gumwall:checked) label[for="wheels-gumwall"],
+body:has(#wheels-aero:checked) label[for="wheels-aero"],
+body:has(#wheels-gravel:checked) label[for="wheels-gravel"] {
+  border-color: var(--accent-primary);
+  background: rgba(16, 185, 129, 0.08);
+}
+
+/* ================= PURE CSS DRIVETRAIN DISPLAY ================= */
+.drive-component { display: none; }
+body:has(#drive-belt:checked) .drive-belt-svg { display: inline; }
+body:has(#drive-hub8:checked) .drive-hub8-svg { display: inline; }
+body:has(#drive-grx11:checked) .drive-grx11-svg { display: inline; }
+body:has(#drive-single:checked) .drive-single-svg { display: inline; }
+
+body:has(#drive-belt:checked) label[for="drive-belt"],
+body:has(#drive-hub8:checked) label[for="drive-hub8"],
+body:has(#drive-grx11:checked) label[for="drive-grx11"],
+body:has(#drive-single:checked) label[for="drive-single"] {
+  border-color: var(--accent-primary);
+  background: rgba(16, 185, 129, 0.08);
+}
+
+/* ================= PURE CSS ADD-ONS DISPLAY ================= */
+.addon-svg-fenders { display: none; }
+.addon-svg-front-rack { display: none; }
+.addon-svg-rear-rack { display: none; }
+.addon-svg-dynamo { display: none; }
+.addon-svg-bell { display: none; }
+
+body:has(#addon-fenders:checked) .addon-svg-fenders { display: inline; }
+body:has(#addon-front-rack:checked) .addon-svg-front-rack { display: inline; }
+body:has(#addon-rear-rack:checked) .addon-svg-rear-rack { display: inline; }
+body:has(#addon-dynamo:checked) .addon-svg-dynamo { display: inline; }
+body:has(#addon-bell:checked) .addon-svg-bell { display: inline; }
+
+/* Addon Row Active Highlights */
+body:has(#addon-fenders:checked) label[for="addon-fenders"],
+body:has(#addon-front-rack:checked) label[for="addon-front-rack"],
+body:has(#addon-rear-rack:checked) label[for="addon-rear-rack"],
+body:has(#addon-dynamo:checked) label[for="addon-dynamo"],
+body:has(#addon-bell:checked) label[for="addon-bell"] {
+  border-color: var(--accent-primary);
+  background: rgba(16, 185, 129, 0.08);
+}
+
+body:has(#addon-fenders:checked) label[for="addon-fenders"] .custom-check-icon,
+body:has(#addon-front-rack:checked) label[for="addon-front-rack"] .custom-check-icon,
+body:has(#addon-rear-rack:checked) label[for="addon-rear-rack"] .custom-check-icon,
+body:has(#addon-dynamo:checked) label[for="addon-dynamo"] .custom-check-icon,
+body:has(#addon-bell:checked) label[for="addon-bell"] .custom-check-icon {
+  background: var(--accent-primary);
+  border-color: var(--accent-primary);
+  color: #ffffff;
+}
+
+/* ================= PURE CSS HEADLIGHT BEAM TOGGLE ================= */
+.headlight-cone-beam {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+body:has(#toggle-headlight-beam:checked) .headlight-cone-beam {
+  opacity: 0.85;
+}
+
+body:has(#toggle-headlight-beam:checked) label[for="toggle-headlight-beam"] {
+  background: rgba(254, 240, 138, 0.2);
+  border-color: #fef08a;
+  color: #fef08a;
+}
+
+/* ================= PURE CSS WHEEL SPIN ANIMATION ================= */
+@keyframes cssWheelSpin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(720deg); }
+}
+
+body:has(#toggle-wheel-spin:checked) #rear-wheel {
+  transform-origin: 210px 390px;
+  animation: cssWheelSpin 2.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+body:has(#toggle-wheel-spin:checked) #front-wheel {
+  transform-origin: 760px 390px;
+  animation: cssWheelSpin 2.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* ================= PURE CSS TABS DISPLAY ================= */
+.builder-tab-pane { display: none; animation: fadeInPane 0.25s ease; }
+
+body:has(#tab-nav-frame:checked) #pane-frame { display: block; }
+body:has(#tab-nav-cockpit:checked) #pane-cockpit { display: block; }
+body:has(#tab-nav-wheels:checked) #pane-wheels { display: block; }
+body:has(#tab-nav-gear:checked) #pane-gear { display: block; }
+
+body:has(#tab-nav-frame:checked) label[for="tab-nav-frame"],
+body:has(#tab-nav-cockpit:checked) label[for="tab-nav-cockpit"],
+body:has(#tab-nav-wheels:checked) label[for="tab-nav-wheels"],
+body:has(#tab-nav-gear:checked) label[for="tab-nav-gear"] {
+  background: var(--bg-tertiary);
+  color: var(--accent-primary);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ================= VISUALIZER COLUMN (CENTRE ATTRACTION) ================= */
+.builder-visualizer-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  backdrop-filter: blur(14px);
+  box-shadow: var(--shadow-lg);
+  position: sticky;
+  top: 96px;
+  transition: border-color var(--transition-fast);
+}
+
+.visualizer-header {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.visualizer-title-group {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.builder-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent-primary);
+}
+
+.bike-name-input {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  border-bottom: 1.5px dashed var(--border-color-hover);
+  padding: 2px 4px;
+  max-width: 320px;
+}
+
+/* Preset Pills */
+.builder-presets-pills {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.presets-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.preset-pill {
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  background: var(--bg-tertiary);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-color);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.preset-pill:hover {
+  background: var(--bg-card-hover);
+  color: var(--text-primary);
+  border-color: var(--border-color-hover);
+}
+
+/* Stage Area */
+.visualizer-stage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9.5;
+  min-height: 390px;
+  background: radial-gradient(circle at 50% 60%, rgba(255, 255, 255, 0.03) 0%, transparent 75%),
+              var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stage-backdrop-glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at 50% 50%, var(--bike-paint-main) 0%, transparent 70%);
+  opacity: 0.35;
+  transition: background 0.6s ease;
+  z-index: 1;
+}
+
+.svg-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.bike-render-svg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 18px 24px rgba(0, 0, 0, 0.45));
+}
+
+/* Interactive Hotspots */
+.hotspots-container {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.hotspot-btn {
+  position: absolute;
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transform: translate(-50%, -50%);
+  transition: transform var(--transition-fast);
+}
+
+.hotspot-pulse {
+  width: 14px;
+  height: 14px;
+  background: #ffffff;
+  border-radius: 50%;
+  border: 2px solid var(--accent-primary);
+  box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.35);
+  animation: pulse-hotspot 2s infinite;
+}
+
+@keyframes pulse-hotspot {
+  0% { transform: scale(0.9); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+  70% { transform: scale(1.1); box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+  100% { transform: scale(0.9); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}
+
+.hotspot-tag {
+  background: rgba(10, 13, 20, 0.88);
+  backdrop-filter: blur(6px);
+  color: #ffffff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 3px 8px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
+  opacity: 0.85;
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
+}
+
+.hotspot-btn:hover .hotspot-tag {
+  opacity: 1;
+  background: var(--accent-primary);
+  border-color: var(--accent-primary);
+  transform: translateY(-2px);
+}
+
+/* Stage Actions */
+.stage-actions {
+  position: absolute;
+  bottom: 14px;
+  right: 14px;
+  display: flex;
+  gap: 8px;
+  z-index: 4;
+}
+
+.stage-action-label {
+  background: rgba(10, 13, 20, 0.75);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.stage-action-label:hover {
+  background: var(--bg-tertiary);
+  border-color: var(--border-color-hover);
+  color: var(--accent-primary);
+}
+
+/* Live Summary Bar */
+.builder-summary-bar {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1.6fr;
+  gap: 16px;
+  align-items: center;
+  padding-top: 24px;
+  margin-top: 20px;
+  border-top: 1px solid var(--border-color);
+}
+
+.summary-metric {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.metric-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+}
+
+.metric-value {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.metric-value small {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.posture-badge {
+  color: var(--accent-secondary);
+}
+
+.summary-price-box {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+}
+
+.price-eyebrow {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.price-value {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--accent-primary);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.add-bike-cart-btn {
+  width: 100%;
+  padding: 12px 18px;
+  font-size: 0.9rem;
+}
+
+/* ================= CONTROLS COLUMN (CONFIGURATOR TABS) ================= */
+.builder-controls-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  backdrop-filter: blur(14px);
+  box-shadow: var(--shadow-md);
+}
+
+.builder-tabs-nav {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+  background: var(--bg-secondary);
+  padding: 6px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  margin-bottom: 24px;
+}
+
+.tab-nav-label {
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 10px 8px;
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  text-align: center;
+}
+
+.tab-nav-label i {
+  font-size: 1.15rem;
+}
+
+.tab-nav-label:hover {
+  color: var(--text-primary);
+}
+
+@keyframes fadeInPane {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.config-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.config-section.mt-4 {
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border-color);
+}
+
+.config-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.config-subtitle {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  margin-top: -6px;
+  margin-bottom: 8px;
+}
+
+/* Option Cards (Pure CSS Clickable Labels) */
+.options-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.option-card-label {
+  background: var(--bg-secondary);
+  border: 1.5px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  display: block;
+}
+
+.option-card-label:hover {
+  border-color: var(--border-color-hover);
+  background: var(--bg-card-hover);
+  transform: translateY(-1px);
+}
+
+.option-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.option-name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+}
+
+.option-price {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--accent-primary);
+}
+
+.option-desc {
+  font-size: 0.84rem;
+  color: var(--text-secondary);
+  line-height: 1.45;
+  margin-bottom: 8px;
+}
+
+.option-tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.tag-pill {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  background: var(--bg-tertiary);
+  padding: 3px 8px;
+  border-radius: var(--radius-sm);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.tag-pill.tag-accent {
+  color: var(--accent-primary);
+  background: rgba(16, 185, 129, 0.1);
+}
+
+.saddle-preview-chip {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  margin-right: 8px;
+  display: inline-block;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Color Swatches Grid */
+.color-swatches-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.color-swatch-label {
+  background: var(--bg-secondary);
+  border: 1.5px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 12px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.color-swatch-label:hover {
+  border-color: var(--border-color-hover);
+  transform: translateY(-2px);
+}
+
+.swatch-circle {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+.swatch-check {
+  color: #ffffff;
+  font-size: 1.1rem;
+  opacity: 0;
+  transform: scale(0.6);
+  transition: all var(--transition-fast);
+}
+
+.swatch-name {
+  font-size: 0.8rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 2px;
+}
+
+.swatch-finish {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+/* Commuter Addons List */
+.addons-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.addon-row-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  background: var(--bg-secondary);
+  border: 1.5px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.addon-row-label:hover {
+  border-color: var(--border-color-hover);
+  background: var(--bg-card-hover);
+}
+
+.custom-check-icon {
+  width: 22px;
+  height: 22px;
+  border: 2px solid var(--border-color-hover);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: transparent;
+  font-size: 0.95rem;
+  background: var(--bg-tertiary);
+  transition: all var(--transition-fast);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.addon-info {
+  flex: 1;
+}
+
+.addon-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.addon-name {
+  font-family: var(--font-display);
+  font-size: 0.92rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.addon-price {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--accent-primary);
+}
+
+.addon-desc {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+/* Responsive Builder */
+@media (max-width: 1100px) {
+  .builder-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .builder-visualizer-card {
+    position: static;
+  }
+}
+
+@media (max-width: 768px) {
+  .builder-summary-bar {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .summary-price-box {
+    grid-column: span 2;
+    align-items: stretch;
+    margin-top: 8px;
+  }
+
+  .builder-tabs-nav {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .color-swatches-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
